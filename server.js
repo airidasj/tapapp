@@ -14,21 +14,21 @@ var panelData = [
                 icon: "059_Smilesend",
                 background: "#04be2c",
                 text1: "Have a JOINT",
-                text2: "you motherfucker...",
+                text2: "you lucky bastard...",
             },
             {  
                 time: + new Date('2015.03.18.15:15'),
                 icon: "053_Institution",
                 background: "#d70335",
                 text1: "Get a 20 pounds hooker",
-                text2: "you motherfucker...",
+                text2: "you lucky bastard...",
             },
             {  
                 time: + new Date('2015.03.19.15:15'),
                 icon: "",
                 background: "",
                 text1: "Have a JOINT",
-                text2: "you motherfucker...",
+                text2: "you lucky bastard...",
             },
 
             ];
