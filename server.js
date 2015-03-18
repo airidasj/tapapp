@@ -58,7 +58,7 @@ var panelData = [{
 
 // 
 
-var noPinPanel = [{ image: 'no-pin', time: 0}]
+var noPinPanel = [{ image: 'no-pin', time: 0, button: 'GO Back'}]
 
 
 app.get('/panelData/:pinNumber', function(req, res){

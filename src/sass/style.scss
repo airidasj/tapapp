@@ -269,6 +269,17 @@ div.eventImage{
   position: absolute;
 }
 
+button.eventButton{
+  position: absolute;
+  z-index: 100;
+  padding: 20px;
+  bottom: 10%;
+  background-color: #009e0f;
+  color: #fff;
+  font-size: 30px;
+  border: none;
+  width: 100%;
+}
 
 .timer{
   position: absolute;

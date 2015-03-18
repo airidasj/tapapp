@@ -10,7 +10,7 @@
     "watch": "compass watch --sass-dir=src/sass --css-dir=dist/css --output-style compact",
     "watch-js": "watchify src/js/example-index.js -o dist/js/example-bundle.js",
     "build-js": "browserify src/js/example-index.js -o dist/js/example-bundle.js",
-    "start": "node server.js",
+    "start": "forever --minUptime 1000 --spinSleepTime 250 --killSignal=SIGTERM --watch server.js",
     "gulp": "gulp"
   },
   "keywords": [
