@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" type="text/css" href="../dist/css/style.css">
+        <title>wrreed-boilerplate example</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            (function(d, n){
+                if((n.userAgent.match(/iPhone/i)) || (n.userAgent.match(/iPod/i))) {
+                    d.querySelector('html').classList.add('iphone'); }
+            })(document, navigator);
+        </script>
+        <div class="panels-wrapper home">
+            <header class="panels-wrapper-header">
+                <div class="page-indicator-wrapper">
+                    <ul class="page-indicator">
+                        <li class="dot active"></li>
+                        <li class="dot"></li>
+                        <li class="dot"></li>
+                    </ul>
+                </div>
+                <button class="menu-trigger bars">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </header>
+            <div id="home-panels" class="panels">
+                <section class="panel starred">
+                    <header class="panel-header">
+                        <div class="panel-menu">
+                            <ul class="menu">
+                                <li class="menu-item"><a href="#">Find my friends</a></li>
+                                <li class="menu-item"><a href="#">Manage stars</a></li>
+                                <li class="menu-item"><a href="#">Discover stars</a></li>
+                                <li class="menu-item"><a href="#">Star settings</a></li>
+                            </ul>
+                        </div>
+                        <h2>Starred</h2>
+                    </header>
+                    <div class="panel-body">
+                    <ul class="list-view">
+                        <li class="list-item"><a href="#">@wrreed-bot</a></li>
+                        <li class="list-item"><a href="#">#bugs</a></li>
+                        <li class="list-item"><a href="#">@chris</a></li>
+                        <li class="list-item"><a href="#">#dev</a></li>
+                        <li class="list-item"><a href="#">#general</a></li>
+                        <li class="list-item"><a href="#">#ideas</a></li>
+                        <li class="list-item"><a href="#">#invite</a></li>
+                        <li class="list-item"><a href="#">@jakob</a></li>
+                        <li class="list-item"><a href="#">#marketing</a></li>
+                        <li class="list-item"><a href="#">@nick</a></li>
+                        <li class="list-item"><a href="#">@nikita</a></li>
+                        <li class="list-item"><a href="#">#progress</a></li>
+                        <li class="list-item"><a href="#">@preslav</a></li>
+                        <li class="list-item"><a href="#">@vithushan</a></li>
+                    </ul>
+                    </div>
+                </section>
+                <section class="panel chat">
+                    <header class="panel-header">
+                        <div class="panel-menu">
+                            <ul class="menu">
+                                <li class="menu-item"><a href="#">Find my friends</a></li>
+                                <li class="menu-item"><a href="#">Create group</a></li>
+                                <li class="menu-item"><a href="#">Discover people</a></li>
+                            </ul>
+                        </div>
+                        <h2>Chat</h2>
+                    </header>
+                    <div class="panel-body">
+                        <ul class="list-view">
+                        <li class="list-item"><a href="#">@alex</a></li>
+                        <li class="list-item"><a href="#">@ben</a></li>
+                        <li class="list-item"><a href="#">@brendan</a></li>
+                        <li class="list-item"><a href="#">@carlos</a></li>
+                        <li class="list-item"><a href="#">@cdubbs</a></li>
+                        <li class="list-item"><a href="#">@kerry</a></li>
+                        <li class="list-item"><a href="#">@seva</a></li>
+                    </ul>
+                    </div>
+                </section>
+                <section class="panel channels">
+                    <header class="panel-header">
+                        <div class="panel-menu">
+                            <ul class="menu">
+                                <li class="menu-item"><a href="#">Find my friends</a></li>
+                                <li class="menu-item"><a href="#">Create channel</a></li>
+                                <li class="menu-item"><a href="#">Discover channels</a></li>
+                                <li class="menu-item"><a href="#">Channels settings</a></li>
+                            </ul>
+                        </div>
+                        <h2>Channel</h2>
+                    </header>
+                    <div class="panel-body">
+                    <ul class="list-view">
+                        <li class="list-item"><a href="#">#ecm</a></li>
+                        <li class="list-item"><a href="#">#invites</a></li>
+                    </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="panels-wrapper detail">
+            <div id="detail-panels" class="panels">
+                <section class="panel channel">
+                    <div class="panel-header">
+                        <div class="panel-menu">
+                            <ul class="menu">
+                                <li class="menu-item"><a href="#">About channel</a></li>
+                                <li class="menu-item"><a href="#">Remove from starred</a></li>
+                                <li class="menu-item"><a href="#">Invite friends to channel</a></li>
+                                <li class="menu-item"><a href="#">Leave channel</a></li>
+                            </ul>
+                        </div>
+                        <div class="panel-header-text">
+                            <h3>#ECM</h3>
+                            <span class="panel-sub-header">Read Only. 3 MEMBERS</span>
+                        </div>
+                        <button class="back-trigger left-arrow">
+                            <span class="head-piece"></span>
+                            <span class="head-piece"></span>
+                        </button>
+                         <button class="menu-trigger bars">
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </button>
+                    </div>
+                    <div class="panel-body bottom">
+                        <ul class="text-list">
+                            <li class="text-list-item">
+                                <span class="user-icon">CP</span>
+                                <article class="text-list-bubble">Hey Kerry, I'm looking forward to presenting at the project day in January. Preparation is all complete :)</article>
+                            </li>
+                            <li class="text-list-item">
+                                <span class="user-icon">KB</span>
+                                <article class="text-list-bubble">Awesome, can't wait to see it!</article>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="message-input">
+                            <textarea class="panel-footer-input" placeholder="Type a message..."></textarea>
+                            <span class="panel-footer-control">
+                                <button class="send-trigger">SEND</button>
+                            </span>
+                        </div>
+                    </div>
+                </section>
+                <section class="panel profile">
+                    <div class="panel-header">
+                        <div class="panel-menu">
+                            <ul class="menu">
+                                <li class="menu-item"><a href="#">Menu Item 1</a></li>
+                                <li class="menu-item"><a href="#">Menu Item 2</a></li>
+                                <li class="menu-item"><a href="#">Menu Item 3</a></li>
+                            </ul>
+                        </div>
+                        <div class="panel-header-text">
+                            <h3>About channel</h3>
+                            <span class="panel-sub-header">#ecm</span>
+                        </div>
+                        <button class="back-trigger left-arrow">
+                            <span class="head-piece"></span>
+                            <span class="head-piece"></span>
+                        </button>
+                         <button class="menu-trigger bars">
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </button>
+                    </div>
+                    <div class="panel-body bottom">
+                        <article class="about">
+                            Channel dedicated to staff at Exeter Mathematics College to discuss integrating Wrreed into the EMC community.
+                        </article>
+                        <article class="chart">
+                            <canvas style="width: 100%"></canvas>
+                            <span class="chart-title">VIEWS</span>
+                            <span class="chart-value">105K</span>
+                        </article>
+                        <nav class="tabs">
+                            <a class="tab active">
+                                <span class="count">2</span>
+                                <span class="caption">EDITORS</span>
+                            </a>
+                            <a class="tab">
+                                <span class="count">3</span>
+                                <span class="caption">WRITERS</span>
+                            </a>
+                            <a class="tab">
+                                <span class="count">11</span>
+                                <span class="caption">READERS</span>
+                            </a>
+                        </nav>
+                        <ul class="list-view">
+                            <li class="list-item"><a href="#">Chris Prescott</a></li>
+                            <li class="list-item"><a href="#">Kerry Burnham</a></li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+
+        <script type="text/javascript" src="../dist/js/example-bundle.js"></script>
+    </body>
+</html>

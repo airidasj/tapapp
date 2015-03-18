@@ -1,0 +1,283 @@
+@import "compass";
+
+// Lets make things consistent.
+@import "normalize";
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+// $chat-color: #87C739;
+// $star-color: #FFC500;
+// $channel-color: #5677FB;
+// $chat-bubble-bg-color: #F1F5F8;
+// $list-jewel-bg-color: #F2F5F8;
+// $body-bg: #E0E0E0;
+// $list-seperator-color: #E0E0E0;
+
+
+// MIXINS ---->
+
+@mixin vertical-align {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin horizontal-align {
+    /* Internet Explorer 10 */
+    display:-ms-flexbox;
+    -ms-flex-pack:center;
+    -ms-flex-align:center;
+    /* Firefox */
+    display:-moz-box;
+    -moz-box-pack:center;
+    -moz-box-align:center;
+    /* Safari, Opera, and Chrome */
+    display:-webkit-box;
+    -webkit-box-pack:center;
+    -webkit-box-align:center;
+    /* W3C */
+    display:box;
+    box-pack:center;
+    box-align:center;
+}
+
+// --- Responsive design
+
+$break-small: 440px;
+$break-large: 700px;
+
+
+
+// This is a must! Why isn't it standard?
+*, *:before, *:after {
+    @include box-sizing(border-box);
+}
+
+html {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    color: #000;
+    background-color: #fff;
+    font-family: Open sans;
+}
+
+
+.mixer-header {
+  // height: 20%;
+  background: #333333;
+  text-align: center;
+  // padding-top: 10%;
+  
+  .logo {
+  	overflow: overlay;
+	display: block;
+	padding-top: 25%;
+	
+
+  	@media screen and (max-width: $break-small) {
+	    background: url(../img/logo.png) no-repeat center;
+	    background-size: 70%;
+	}
+
+	background: url(../img/logo.png) no-repeat center;
+
+  }
+}
+
+.mixer-video {
+  background: url(../img/party.jpg) 0 -50px no-repeat #333333;
+  height: 100%;
+  background-size: contain;
+}
+
+.mixer-apply {
+  bottom: 0;
+  /* top: 0; */
+  height: 20%;
+  background: #333333;
+  // border-top: 1px solid #fff;
+  color: #fff;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  padding-top: 5%;
+
+
+  a{
+  	color: #fff;
+  	text-transform: uppercase;
+  	text-decoration: none;
+  }
+  a:hover{
+  	color: #666;
+  }
+}
+
+.mixer-login {
+	@include vertical-align;
+	width: 100%;
+	background: rgba(100, 100, 100, 0.9);
+	padding-top: 10%;
+	padding-bottom: 10%;
+	text-align: center;
+
+	.event{
+		font-size: 20px;
+		padding-bottom: 4%;
+		display: -webkit-inline-box;
+
+		@media screen and (max-width: $break-small) {
+			font-size: 18px;
+		}
+	}
+
+	.form {
+		display: block;
+		padding: 0 15px 0 15px;
+		vertical-align: middle;
+	}
+
+	.input{
+		width:70%;
+		height: 80px;
+		float: left;
+
+		height: 80px;
+		border: 0px !important;
+		border-bottom: 1px solid !important;
+		border-bottom-color: #ccc !important;
+		-moz-border-radius: 0px !important;
+		-khtml-border-radius: 0px !important;
+		-webkit-border-radius: 0px !important;
+		border-radius: 0px !important;
+
+
+		@media screen and (max-width: $break-small) {
+			height: 60px;
+		}
+	}
+	.go {
+		// padding-left: 1%;
+		color: #FFF;
+		font-size: 20px;
+		text-align: center;
+
+	}
+	.go-mixer{
+		border: none;
+		width: 25%;
+		background: #009e0f;
+		height: 80px;
+		float: right;
+
+		@media screen and (max-width: $break-small) {
+			height: 60px;
+		}
+	}
+}
+
+.imageStyle{
+	max-width: 100%; 
+	height: auto;
+}
+
+// PANEL Transitions ======================================================
+
+.panels-wrapper {
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    bottom: 0;
+    @include transition(transform 0.35s ease-out);
+}
+
+.panels-wrapper + .panels-wrapper {
+    left: 100vw;
+}
+
+
+.panels {
+    //@include display-flex;
+    //flex-wrap: nowrap;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2000vw;
+    height: 100vh;
+    overflow: hidden;
+    @include transition(transform ease-out 0.35s);
+}
+
+.panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    // border-left: 1px solid $list-seperator-color;
+    // border-right: 1px solid $list-seperator-color;
+    // padding-top: 50px; // must be height of .panel-header
+    background-color: #FFF;
+}
+
+// .panel:nth-last-child(4){
+//     left: 200vw;
+// }
+
+// .panel:nth-last-child(3){
+//     left: 300vw;
+// }
+// .panel:nth-last-child(2){
+//     left: 400vw;
+// }
+// .panel:nth-last-child(1){
+//     left: 500vw;
+// }
+
+// .panel:first-child + .panel + .panel:last-child {
+//     left: 600vw;
+// }
+
+// .panel:first-child + .panel {
+//     left: 100vw;
+// }
+
+
+div.eventImage{
+  height: 100%;
+  // @include vertical-align; 
+  // @include horizontal-align;
+
+  text-align: center;
+}
+
+.eventImage{
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

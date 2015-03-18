@@ -1,0 +1,46 @@
+{
+  "name": "Miixer-app",
+  "version": "0.0.1",
+  "description": "A HTML/CSS boilerplate framework for the wrreed project",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "compass compile --sass-dir=src/sass --css-dir=dist/css --output-style compressed",
+    "watch": "compass watch --sass-dir=src/sass --css-dir=dist/css --output-style compact",
+    "watch-js": "watchify src/js/example-index.js -o dist/js/example-bundle.js",
+    "build-js": "browserify src/js/example-index.js -o dist/js/example-bundle.js",
+    "start": "node server.js",
+    "gulp": "gulp"
+  },
+  "keywords": [
+    "css",
+    "mobile",
+    "HTML5",
+    "sass",
+    "compass",
+    "wrreed"
+  ],
+  "author": "Airidas Juskaitis",
+  "license": "MIT",
+  "devDependencies": {
+    "watchify": "~2.1.1",
+    "browserify": "~7.0.0",
+    "react-tools": "~0.12.2",
+    "gulp": "~3.8.10",
+    "vinyl-source-stream": "~1.0.0",
+    "reactify": "~0.17.1",
+    "gulp-util": "~3.0.1",
+    "gulp-notify": "~2.1.0",
+    "gulp-compass": "~2.0.3"
+  },
+  "dependencies": {
+    "es6-promise": "~2.0.1",
+    "express": "~4.10.7",
+    "forever": "^0.14.1",
+    "gulp": "^3.8.11",
+    "lodash": "~2.4.1",
+    "react": "~0.12.2",
+    "react-countdown-timer": "^1.0.2"
+  }
+}
