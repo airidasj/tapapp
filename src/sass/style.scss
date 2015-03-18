@@ -3,7 +3,10 @@
 // Lets make things consistent.
 @import "normalize";
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+// @import url(http://fonts.googleapis.com/css?family=Open+Sans);
+// @import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700);
+
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600);
 
 // $chat-color: #87C739;
 // $star-color: #FFC500;
@@ -65,10 +68,9 @@ body {
     margin: 0;
     padding: 0;
     color: #000;
-    background-color: #fff;
-    font-family: Open sans;
+    background-color: #333333;
+    font-family: Source Sans Pro;
 }
-
 
 .mixer-header {
   // height: 20%;
@@ -95,7 +97,7 @@ body {
 .mixer-video {
   background: url(../img/party.jpg) 0 -50px no-repeat #333333;
   height: 100%;
-  background-size: contain;
+  background-size: cover;
 }
 
 .mixer-apply {
@@ -204,6 +206,7 @@ body {
 
 .panels-wrapper + .panels-wrapper {
     left: 100vw;
+    @include transition(transform ease-out 0.35s);
 }
 
 
@@ -267,6 +270,24 @@ div.eventImage{
   // height: 100%;
   width: 100%;
   position: absolute;
+  // text-transform: uppercase;
+
+  h1 {
+    font-size: 35px;
+    color: #304e55;
+    font-weight: 400;
+    margin-top: 5px;
+  }
+  h2 {
+    color: #fff;
+    font-size: 32px;
+    font-weight: 400;
+    margin-top: 5px;
+  }
+}
+
+.eventIcon {
+  width: 45%;
 }
 
 button.eventButton{
@@ -288,8 +309,31 @@ button.eventButton{
   bottom: 20%;
   color: white;
   background: rgba(100, 100, 100, 0.9);
+
+  h1 {
+  font-size: 30px;
+  color: #fff;
+  }
+  h2 {
+    font-size: 28px;
+    color: #fff;
+  }
+
 }
 
+.headerMenu{
+  height: 10%;
+  display: block;
+  text-align: left;
+}
+button.headerBack{
+  background: url(../img/cross.png) 0 0 no-repeat;
+  margin: 10px;
+  width: 70px;
+  height: 70px;
+  background-size: contain;
+  border: none;
+}
 
 
 

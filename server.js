@@ -8,57 +8,42 @@ var app = express();
 
 app.use('', express.static(__dirname + '/www'));
 
-var panelData = [{
-                title: "Starred",
-                className: 'starred',
-                image: "1" || {}, 
-                time: + new Date('2015.03.18.15:15')
+var panelData = [
+            {  
+                time: + new Date('2015.03.18.15:15'),
+                icon: "059_Smilesend",
+                background: "#04be2c",
+                text1: "Have a JOINT",
+                text2: "you motherfucker...",
             },
-
-            {
-                title: "Channel",
-                className: "channels",
-                image: "2" || {}, 
-                time: + new Date('2015.03.18.15:15')
-
+            {  
+                time: + new Date('2015.03.18.15:15'),
+                icon: "053_Institution",
+                background: "#d70335",
+                text1: "Get a 20 pounds hooker",
+                text2: "you motherfucker...",
             },
-
-            {
-                title: "Channel",
-                className: "channels",
-                image: "3" || {},
-                time: + new Date('2015.03.18.16:15') 
-
+            {  
+                time: + new Date('2015.03.19.15:15'),
+                icon: "",
+                background: "",
+                text1: "Have a JOINT",
+                text2: "you motherfucker...",
             },
-                
-            {
-                title: "Starred",
-                className: 'starred',
-                image: "1" || {}, 
-                time: + new Date('2015.03.18.16:15')
-            },
-
-            {
-                title: "Channel",
-                className: "channels",
-                image: "2" || {}, 
-                time: + new Date('2015.03.18.17:15')
-            },
-
-            {
-                title: "Channel",
-                className: "channels",
-                image: "3" || {}, 
-                time: + new Date('2015.03.18.17:15')
-
-            },
-
 
             ];
 
 // 
 
-var noPinPanel = [{ image: 'no-pin', time: 0, button: 'GO Back'}]
+var noPinPanel = [{  
+                image: "1" || {}, 
+                time: 0,
+                icon: "016_System",
+                background: "#f4853a",
+                text2: "Oops! We didn't get your pin",
+                // text2: "you motherfucker...",
+                button: "GO Back",
+            },]
 
 
 app.get('/panelData/:pinNumber', function(req, res){

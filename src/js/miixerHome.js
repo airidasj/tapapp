@@ -26,10 +26,12 @@ var miixerHome = React.createClass({
 
             wrapperClassName = cx({
                 "panels-wrapper": true,
-                "home": true,
+                "detail": true,
                 "moving": this.state.moving
             }),
 
+           
+    
        
             pos = this.state.activePanel || 0,
             mainPanelStyle = {},
@@ -52,13 +54,17 @@ var miixerHome = React.createClass({
         switch(panelDepth){
             case 0:
                 //All good nowt to say...
-                // mainPanelStyle.transform = translate3dString(mainPanelOffsetValue)
-                //mainPanelStyle.transform = translate3dString(mainPanelOffsetValue-100);
-                homePanelStyle.transform = translate3dString(mainPanelOffsetValue);
+                mainPanelStyle.transform = translate3dString(0)
+                detailPanelsStyle.transform = translate3dString(0);
+                homePanelStyle.transform = translate3dString(0);
+
+                mainPanelStyle.webkitTransform = translate3dString(0)
+                detailPanelsStyle.webkitTransform = translate3dString(0);
+                homePanelStyle.webkitTransform = translate3dString(0);
             break;
             case 1:
                 //We are viewing a sliding panels
-                mainPanelStyle.transform = translate3dString(mainPanelOffsetValue);
+                // mainPanelStyle.transform = translate3dString(mainPanelOffsetValue);
 
                 detailPanelsStyle.transform = translate3dString(-100);
                 homePanelStyle.transform = translate3dString(mainPanelOffsetValue-100);
@@ -82,7 +88,7 @@ var miixerHome = React.createClass({
 
         return <div>
                	{ /* Top Level Panels */}
-                <div className={wrapperClassName} style={homePanelStyle}>
+                <div className="panels-wrapper home" style={homePanelStyle}>
                   
                     {/* The home area */}
                     <div className='mixer-header'><span className="logo"></span></div>
@@ -101,7 +107,7 @@ var miixerHome = React.createClass({
                 </div>
 
                 { /* Detail Panels */}
-                <div className="panels-wrapper detail" style={detailPanelsStyle}>
+                <div className={wrapperClassName} style={detailPanelsStyle}>
                     <div ref="topLevelPanels" id="home-panels" className="panels" style={mainPanelStyle}>
 	                    {panels}
 	                 </div>

@@ -4,7 +4,7 @@
  * 2. Prevent iOS text size adjust after orientation change, without disabling
  *    user zoom.
  */
-@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600);
 html {
   font-family: sans-serif;
   /* 1 */
@@ -413,8 +413,8 @@ body {
   margin: 0;
   padding: 0;
   color: #000;
-  background-color: #fff;
-  font-family: Open sans;
+  background-color: #333333;
+  font-family: Source Sans Pro;
 }
 
 .mixer-header {
@@ -437,7 +437,7 @@ body {
 .mixer-video {
   background: url(../img/party.jpg) 0 -50px no-repeat #333333;
   height: 100%;
-  background-size: contain;
+  background-size: cover;
 }
 
 .mixer-apply {
@@ -544,6 +544,10 @@ body {
 
 .panels-wrapper + .panels-wrapper {
   left: 100vw;
+  -moz-transition: -moz-transform 0.35s ease-out;
+  -o-transition: -o-transform 0.35s ease-out;
+  -webkit-transition: -webkit-transform 0.35s ease-out;
+  transition: transform 0.35s ease-out;
 }
 
 .panels {
@@ -578,6 +582,22 @@ div.eventImage {
   width: 100%;
   position: absolute;
 }
+.eventImage h1 {
+  font-size: 35px;
+  color: #304e55;
+  font-weight: 400;
+  margin-top: 5px;
+}
+.eventImage h2 {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 400;
+  margin-top: 5px;
+}
+
+.eventIcon {
+  width: 45%;
+}
 
 button.eventButton {
   position: absolute;
@@ -598,4 +618,27 @@ button.eventButton {
   bottom: 20%;
   color: white;
   background: rgba(100, 100, 100, 0.9);
+}
+.timer h1 {
+  font-size: 30px;
+  color: #fff;
+}
+.timer h2 {
+  font-size: 28px;
+  color: #fff;
+}
+
+.headerMenu {
+  height: 10%;
+  display: block;
+  text-align: left;
+}
+
+button.headerBack {
+  background: url(../img/cross.png) 0 0 no-repeat;
+  margin: 10px;
+  width: 70px;
+  height: 70px;
+  background-size: contain;
+  border: none;
 }
