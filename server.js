@@ -12,7 +12,6 @@ var panelData = [{
                 title: "Starred",
                 className: 'starred',
                 image: "1" || {}, 
-                time: 
             },
 
             {
