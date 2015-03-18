@@ -8,17 +8,32 @@ var Panel = React.createClass({
         var position = {};
         position.left = this.props.number+"00vw";
 
-        return <section className={"panel"} style={position}>
-           
-              <div className="eventImage">
-              <CountdownTimer initialTimeRemaining={30000} />
+        var timeLeft = this.props.time - new Date();
 
-              <EventImage image={this.props.image}/>
+        // console.log('Time left....', timeLeft);
+        if(timeLeft < 0){
 
-              </div>
-              
+            return <section className={"panel"} style={position}>
+                <div className="eventImage">
+                <EventImage image={this.props.image}/>
+                </div>
 
-            </section>;
+              </section>;
+
+        } else {
+
+            return <section className={"panel"} style={position}>
+               
+                  <div className="eventImage">
+                  <CountdownTimer initialTimeRemaining={timeLeft} />
+
+                  <EventImage image={"locked-event"}/>
+
+                  </div>
+                
+
+              </section>;
+        }
     },
 
 

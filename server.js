@@ -12,19 +12,22 @@ var panelData = [{
                 title: "Starred",
                 className: 'starred',
                 image: "1" || {}, 
+                time: + new Date('2015.03.18.15:15')
             },
 
             {
                 title: "Channel",
                 className: "channels",
                 image: "2" || {}, 
+                time: + new Date('2015.03.18.15:15')
 
             },
 
             {
                 title: "Channel",
                 className: "channels",
-                image: "3" || {}, 
+                image: "3" || {},
+                time: + new Date('2015.03.18.16:15') 
 
             },
                 
@@ -32,27 +35,30 @@ var panelData = [{
                 title: "Starred",
                 className: 'starred',
                 image: "1" || {}, 
+                time: + new Date('2015.03.18.16:15')
             },
 
             {
                 title: "Channel",
                 className: "channels",
                 image: "2" || {}, 
-
+                time: + new Date('2015.03.18.17:15')
             },
 
             {
                 title: "Channel",
                 className: "channels",
                 image: "3" || {}, 
+                time: + new Date('2015.03.18.17:15')
 
             },
 
 
             ];
 
+// 
 
-var noPinPanel = [{ image: 'no-pin'}]
+var noPinPanel = [{ image: 'no-pin', time: 0}]
 
 
 app.get('/panelData/:pinNumber', function(req, res){
@@ -70,10 +76,19 @@ app.get('/panelData/', function(req, res){
 
 
 
+// aws = require("aws")
 
+// aws.s3.createSignedURL()
 
+// "https://s3.amazonaws.com/miixer/userpics/239741623874t129837456183724r.jpg"
 
+// var dsn = "mongodb://localhost/test";
 
+// if(process.env.MONGOLAB_URI){
+//     dsn = process.env.MONGOLAB_URI)
+// }
+
+// mongoose.connection(dsn);
 
 app.listen(process.env.PORT||8001);
 
