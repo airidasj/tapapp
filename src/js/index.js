@@ -30,6 +30,7 @@ dispatcher.on('pinNumber', function(pin){
 
 if (window) {
     window._store = store;
+    window.React = React;
 }
 
 app = React.render(React.createElement(miixerHome), document.body);

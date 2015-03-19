@@ -17,28 +17,32 @@ var Panel = React.createClass({
         var timeLeft = this.props.time - new Date();
 
         var buttonComponent;
+        var eventFooter;
         if(button){
-          buttonComponent = <button className="eventButton" onClick={this.onClick}>{button}</button>;
+          buttonComponent = <button className="eventButton" onClick={this.props.resetPanels}>{button}</button>;
         } else {
-          buttonComponent = <button onClick={this.onClick} className="headerBack"></button>;
+          buttonComponent = <button onClick={this.props.resetPanels} className="headerBack"></button>;
+
+          eventFooter = 
+                <div className="eventFooter">
+                  <button className="eventPictures" onClick={this.footerButton.bind(null, 'eventPictures')}></button>
+                  <button className="eventFacebook" onClick={this.footerButton.bind(null, 'eventFacebook')}></button>
+                </div>;
         }
 
         // console.log('Time left....', timeLeft);
         if(timeLeft < 0){
-
             return <section className={"panel"} style={position}>
                 <div className="eventImage" style={eventStyle}>
-
                 <header className="headerMenu">{buttonComponent}</header>
-
                 <EventIcon image={this.props.icon}/>
-
-
                   <h1>{this.props.text1}</h1>
                   <h2>{this.props.text2}</h2>
-
                 </div>
                   {buttonComponent}
+
+                  {eventFooter}
+
               </section>;
 
         } else {
@@ -60,8 +64,9 @@ var Panel = React.createClass({
         }
     },
 
-    onClick: function(){
-      store.set('panelDepth', 0)
+    footerButton: function(name){
+      console.log(name);
+      store.set('slideUpPanel', name);
     }
 });
 

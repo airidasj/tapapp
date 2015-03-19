@@ -611,6 +611,34 @@ button.eventButton {
   width: 100%;
 }
 
+.eventFooter {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+button.eventPictures {
+  background: url(../img/gallery.png) 0 0 no-repeat;
+  margin: 10px;
+  bottom: 0;
+  width: 60px;
+  height: 60px;
+  background-size: contain;
+  border: none;
+  float: left;
+}
+
+button.eventFacebook {
+  background: url(../img/group.png) 0 0 no-repeat;
+  margin: 10px;
+  bottom: 0;
+  width: 60px;
+  height: 60px;
+  background-size: contain;
+  border: none;
+  float: right;
+}
+
 .timer {
   position: absolute;
   z-index: 100;
@@ -641,4 +669,38 @@ button.headerBack {
   height: 70px;
   background-size: contain;
   border: none;
+}
+
+.slideUpPanel {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: #333333;
+  transition: top 200ms ease-out;
+}
+.slideUpPanel h1 {
+  color: #fff;
+  float: left;
+}
+.slideUpPanel .headerMenu {
+  height: 20%;
+}
+.slideUpPanel .headerMenu .headerBack {
+  float: left;
+}
+
+.slideUp-enter {
+  top: 100vh;
+}
+
+.slideUp-enter-active {
+  top: 0;
+  left: 0;
+  transition: top 200ms ease-out;
+}
+
+.slideUp-leave {
+  top: -100vh;
 }

@@ -30,7 +30,6 @@ function scripts(watch) {
   if(watch) {
     bundler = watchify(bundler);
   }
-
   bundler.transform(reactify);
 
   rebundle = function() {
@@ -38,7 +37,7 @@ function scripts(watch) {
     stream.on('error', handleError('Browserify'));
     stream = stream.pipe(source('bundle.js'));
     return stream.pipe(gulp.dest('./www/js')).pipe(notify({
-      title: "WREED Boilerplate",
+      title: "MIIXER",
       message: "Scripts Built"
     }));
   };

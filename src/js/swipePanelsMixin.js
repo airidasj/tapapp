@@ -61,8 +61,7 @@ var width,
     isSwiping = false,
     isMoving = false,
     menuOpen = false,
-    detailShowing = false,
-    pos = 0;
+    detailShowing = false;
 
 var getCoords = function(touch){
     return {x: touch.pageX, y: touch.pageY };
@@ -111,7 +110,8 @@ module.exports = {
      */
      finish: function(el){
         var state = {style: {}};
-            el.style[transition] = null;
+            el.style[transition] = null,
+            pos = this.state.activePanel;
         if(delta && Math.abs(delta.x) > 60){
             //we move scroll left!;
             if(delta.x < -1){
@@ -146,7 +146,7 @@ module.exports = {
         }
         if(delta){
             state.style = {};
-            var val = (pos * 100 * -1) + (delta.x/(width/3) * 100);
+            var val = (this.state.activePanel * 100 * -1) + (delta.x/(width/3) * 100);
             //Make sure we dont overscroll left...
             if(val > 0){
                 val = 0;

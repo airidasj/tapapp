@@ -5,6 +5,7 @@ var React = require('react/addons'),
     dispatcher = require('./Dispatcher').getInstance(),
     store = require('./Store').getInstance();
 
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 var translate3dString = function(x){
     x = x || 0;
@@ -45,6 +46,7 @@ var miixerHome = React.createClass({
                     //panel.menu.menuOpen = activePanel === i && menuOpen;
                     //panel.content.onItemClick = this.onItemClick;
                     panel.number = i;
+                    panel.resetPanels = this.resetPanels;
 
                     return <Panel key={i} {...panel} />;
                 }, this);
@@ -82,9 +84,25 @@ var miixerHome = React.createClass({
             break;
         }
 
+        var obj = {
+            name: "test",
+            func : function(){ 
+                return this.name;
+            }
+        }
+
         // Defining the witdth depending on the number of panels...
         // mainPanelStyle.width = store.get('numberOfPanels')+ "00vw";
-                
+            var slideUpPanel = null;
+            if(store.get("slideUpPanel")){
+                var text = store.get("slideUpPanel");
+                slideUpPanel = 
+                <div key={"slideUp"+text} className="slideUpPanel">
+                    <header className="headerMenu"><button onClick={store.set.bind(store, 'slideUpPanel', false)} className="headerBack"></button><h1>{text}</h1></header>
+        
+                </div>
+            }
+
 
         return <div>
                	{ /* Top Level Panels */}
@@ -114,6 +132,9 @@ var miixerHome = React.createClass({
 
                   
                 </div>
+                <ReactCSSTransitionGroup transitionName="slideUp">
+                    {slideUpPanel}
+                </ReactCSSTransitionGroup>
                </div>
     },
     onItemClick: function(item){
@@ -127,6 +148,10 @@ var miixerHome = React.createClass({
             moving: false,
             menuOpen: false
         }
+    },
+
+    resetPanels: function() {
+        this.setState(this.getInitialState());
     },
     
     toggleDetail: function(){
