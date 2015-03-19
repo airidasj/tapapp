@@ -40,7 +40,7 @@ var noPinPanel = [{
                 time: 0,
                 icon: "016_System",
                 background: "#f4853a",
-                text2: "Oops! We didn't get your pin",
+                text2: "Oops! We didn't find this pin",
                 // text2: "you motherfucker...",
                 button: "GO Back",
             },]
