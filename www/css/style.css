@@ -613,7 +613,7 @@ button.eventButton {
 
 .eventFooter {
   position: absolute;
-  bottom: 0;
+  bottom: 0vh;
   width: 100%;
 }
 
