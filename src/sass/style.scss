@@ -79,7 +79,7 @@ body {
   // padding-top: 10%;
   
   .logo {
-  	overflow: overlay;
+  overflow: overlay;
 	display: block;
 	padding-top: 25%;
 	
@@ -217,7 +217,7 @@ body {
     top: 0;
     left: 0;
     width: 2000vw;
-    height: 100vh;
+    bottom:0;
     overflow: hidden;
     @include transition(transform ease-out 0.35s);
 }
@@ -226,8 +226,8 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    height: 100vh;
     width: 100vw;
+    bottom: 0;
     // border-left: 1px solid $list-seperator-color;
     // border-right: 1px solid $list-seperator-color;
     // padding-top: 50px; // must be height of .panel-header
@@ -258,10 +258,9 @@ body {
 
 
 div.eventImage{
-  height: 100%;
   // @include vertical-align; 
   // @include horizontal-align;
-
+  min-height: 100vh;
   text-align: center;
 }
 
@@ -277,6 +276,7 @@ div.eventImage{
     color: #304e55;
     font-weight: 400;
     margin-top: 5px;
+    margin-bottom: 0;
   }
   h2 {
     color: #fff;
@@ -391,16 +391,18 @@ button.headerBack{
 
 .slideUp-enter {
   top: 100vh;
+  transition: top 400ms ease-in-out;
 }
 
 .slideUp-enter-active {
   top: 0;
   left: 0;
-  transition: top 200ms ease-out;
+  transition: top 400ms ease-in-out;
 }
 
 .slideUp-leave {
-  top: -100vh;
+  top: 100vh;
+  transition: top 400ms ease-in-out;
 }
 
 
