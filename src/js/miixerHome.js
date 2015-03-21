@@ -93,13 +93,20 @@ var miixerHome = React.createClass({
 
         // Defining the witdth depending on the number of panels...
         // mainPanelStyle.width = store.get('numberOfPanels')+ "00vw";
+
+        var FBusers = store.get('peopleInEvent') || [];
+
+        var Users = FBusers.map(function(user, i){
+            return <FacebookNames key={i} userNames={user} />
+        }, this);
+
             var slideUpPanel = null;
             if(store.get("slideUpPanel")){
                 var text = store.get("slideUpPanel");
                 slideUpPanel = 
                 <div key={"slideUp"+text} className="slideUpPanel">
                     <header className="headerMenu"><button onClick={store.set.bind(store, 'slideUpPanel', false)} className="headerBack"></button><h1>{text}</h1></header>
-        
+                    {Users}
                 </div>
             }
 
@@ -163,13 +170,20 @@ var miixerHome = React.createClass({
        depth = depth == 2 ? 1 : 2;
        store.set('panelDepth', depth);
     },
-    onSend: function(pin){
-        store.set('panelDepth', 1);
-        var input = document.querySelector('.input');
-        dispatcher.emit('pinNumber', input.value);
-        input.value = "";
-
+    onSend: function(){
+        window.location = "/login/"+this.refs.input.getDOMNode().value;
     }
 });
+
+var FacebookNames = React.createClass({ 
+
+    render: function(){
+
+       return <li><h1>{this.props.userNames}</h1></li>
+    }
+
+});
+
+
 
 module.exports = miixerHome;

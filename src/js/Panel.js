@@ -1,6 +1,7 @@
 var React = require('react'),
     store = require('./Store').getInstance(),
-    CountdownTimer = require('./countdown_timer');
+    CountdownTimer = require('./countdown_timer'),
+    dispatcher = require('./Dispatcher').getInstance();
 
 var Panel = React.createClass({
 
@@ -67,6 +68,7 @@ var Panel = React.createClass({
     footerButton: function(name){
       console.log(name);
       store.set('slideUpPanel', name);
+      dispatcher.emit('eventFacebook', store.get('pinNumber'));
     }
 });
 

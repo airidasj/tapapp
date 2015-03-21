@@ -3,57 +3,57 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 
 var app = express();
-// var passport = require('passport'),
-//     FacebookStrategy = require('passport-facebook').Strategy;
+var passport = require('passport'),
+    FacebookStrategy = require('passport-facebook').Strategy;
 
 
-  // app.use(cookieParser());
-  // app.use(session({ secret: 'keyboard cat' }));
-  // app.use(passport.initialize());
-  // app.use(passport.session());
+  app.use(cookieParser());
+  app.use(session({ secret: 'keyboard cat' }));
+  app.use(passport.initialize());
+  app.use(passport.session());
 
 // ================================= //
 // Working with Facebook integration //
 // ================================= //
 
-// var USERS = {};
+var USERS = {};
 
-// passport.use(new FacebookStrategy({
-//     clientID: "927061310658845",
-//     clientSecret: "60dd3ae06bca44adfc4046b2b8132981",
-//     callbackURL: "http://localhost:8001/auth/facebook/callback"
-//   },
+passport.use(new FacebookStrategy({
+    clientID: "927061310658845",
+    clientSecret: "60dd3ae06bca44adfc4046b2b8132981",
+    callbackURL: "http://localhost:8001/auth/facebook/callback"
+  },
 
-//   function(accessToken, refreshToken, profile, done) {
-//     USERS[profile.id] = profile;
-//     done(null, USERS[profile.id]);
-//   }
-// ));
+  function(accessToken, refreshToken, profile, done) {
+    USERS[profile.id] = profile;
+    done(null, USERS[profile.id]);
+  }
+));
 
-// passport.serializeUser(function(user, done) {
-//   done(null, user.id);
-// });
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
 
-// passport.deserializeUser(function(id, done) {
-//   var user = USERS[id];
-//   if(!user){
-//     return done(new Error("No such user!"));
-//   }
-//   done(null, user);
-// });
+passport.deserializeUser(function(id, done) {
+  var user = USERS[id];
+  if(!user){
+    return done(new Error("No such user!"));
+  }
+  done(null, user);
+});
   
-//   // Redirect the user to Facebook for authentication.  When complete,
-// // Facebook will redirect the user back to the application at
-// //     /auth/facebook/callback
-// app.get('/auth/facebook', passport.authenticate('facebook'));
+  // Redirect the user to Facebook for authentication.  When complete,
+// Facebook will redirect the user back to the application at
+//     /auth/facebook/callback
+app.get('/auth/facebook', passport.authenticate('facebook'));
 
-// // Facebook will redirect the user to this URL after approval.  Finish the
-// // authentication process by attempting to obtain an access token.  If
-// // access was granted, the user will be logged in.  Otherwise,
-// // authentication has failed.
-// app.get('/auth/facebook/callback', 
-//   passport.authenticate('facebook', { successRedirect: '/login/success',
-//                                       failureRedirect: '/' }));
+// Facebook will redirect the user to this URL after approval.  Finish the
+// authentication process by attempting to obtain an access token.  If
+// access was granted, the user will be logged in.  Otherwise,
+// authentication has failed.
+app.get('/auth/facebook/callback', 
+  passport.authenticate('facebook', { successRedirect: '/login/success',
+                                      failureRedirect: '/' }));
 
 
 
@@ -111,7 +111,7 @@ var panelData = [
                 id: 12342314,
                 time: + new Date('2015.03.18.15:15'),
                 icon: "059_Smilesend",
-                background: "##333333",
+                background: "#04be2c",
                 text1: "Swquence ends",
                 text2: "...",
             },
