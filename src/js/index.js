@@ -24,7 +24,7 @@ dispatcher.on('pinNumber', function(pin){
             store.set('panelDepth', 1);
             store.set('panelData', data);
             store.set('numberOfPanels', data.length);
-            // dispatcher.emit("enterPanel", pin); 
+            dispatcher.emit("enterPanel", pin); 
         });
 });
 

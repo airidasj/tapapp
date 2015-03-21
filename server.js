@@ -21,7 +21,8 @@ var USERS = {};
 passport.use(new FacebookStrategy({
     clientID: "927061310658845",
     clientSecret: "60dd3ae06bca44adfc4046b2b8132981",
-    callbackURL: "http://localhost:8001/auth/facebook/callback"
+    // callbackURL: "http://localhost:8001/auth/facebook/callback"
+    callbackURL: "http://app.miixer.im/auth/facebook/callback"
   },
 
   function(accessToken, refreshToken, profile, done) {
@@ -70,59 +71,46 @@ var panelData = [
                 time: + new Date('2015.03.18.15:15'),
                 icon: "059_Smilesend",
                 background: "#04be2c",
-                text1: "Lora starts a story",
-                text2: "The story of a teenage party",
+                text1: "Best APP EVER",
+                text2: "damn lucky bastards...",
             },
             {  
                 time: + new Date('2015.03.18.15:15'),
                 icon: "053_Institution",
                 background: "#d70335",
-                text1: "Chris tells:",
-                text2: "The best movie ever",
-            },
-
-            {  
-                id: 12342314,
-                time: + new Date('2015.03.18.15:15'),
-                icon: "059_Smilesend",
-                background: "#04be2c",
-                text1: "Joint Time",
-                text2: "...",
+                text1: "Castle event?",
+                text2: "you lucky bastard...",
             },
 
             {  
                 time: + new Date('2015.03.18.15:15'),
                 icon: "053_Institution",
                 background: "#d70335",
-                text1: "Carlos describes:",
-                text2: "The best women I had...",
+                text1: "Castle event?",
+                text2: "you lucky bastard...",
+            },
+            {  
+                time: + new Date('2015.03.18.15:15'),
+                icon: "053_Institution",
+                background: "#d70335",
+                text1: "Castle event?",
+                text2: "you lucky bastard...",
             },
 
             {  
-                id: 12342314,
-                time: + new Date('2015.03.18.15:15'),
-                icon: "059_Smilesend",
-                background: "#04be2c",
-                text1: "Airidas starts the game",
-                text2: "Never have I ever...",
+                time: + new Date('2015.03.22.15:15'),
+                icon: "",
+                background: "",
+                text1: "Have a JOINT",
+                text2: "you lucky bastard...",
             },
-
-             {  
-                id: 12342314,
+            {  
                 time: + new Date('2015.03.18.15:15'),
-                icon: "059_Smilesend",
-                background: "#04be2c",
-                text1: "Swquence ends",
-                text2: "...",
+                icon: "053_Institution",
+                background: "#d70335",
+                text1: "Castle event?",
+                text2: "you lucky bastard...",
             },
-
-            // {  
-            //     time: + new Date('2015.03.21.15:15'),
-            //     icon: "",
-            //     background: "",
-            //     text1: "Have a JOINT",
-            //     text2: "you lucky bastard...",
-            // },
 
             ];
 
@@ -170,32 +158,32 @@ app.get('/login/:pin', function(req, res){
 
 
 
-// app.post("/panel/:panelId", function(req,res){
-//     var panelId = req.params.panelId;
-//     if(!(panelId in userCache)){
-//         userCache[panelId] = {};
-//     }
-//     userCache[panelId][req.user.id] = +new Date();
-//     res.send(204);
-// });
+app.post("/panel/:panelId", auth, function(req,res){
+    var panelId = req.params.panelId;
+    if(!(panelId in userCache)){
+        userCache[panelId] = {};
+    }
+    userCache[panelId][req.user.id] = +new Date();
+    res.send(204);
+});
 
-// app.delete("/panel/:panelId", auth, function(req, res){
-//     var panelId = req.params.panelId;
-//     if(panelId in userCache){
-//         delete userCache[panelId][req.user.id];
-//     }
-//     res.send(204);
-// });
+app.delete("/panel/:panelId", auth, function(req, res){
+    var panelId = req.params.panelId;
+    if(panelId in userCache){
+        delete userCache[panelId][req.user.id];
+    }
+    res.send(204);
+});
 
-// app.get("/panel-users/:panelId", auth, function(req,res){
-//     var panelId = req.params.panelId;
-//     if(!(panelId in userCache)){
-//         return res.send({users: []});
-//     }
-//     return res.send({users: Object.keys(userCache[panelId]).map(function(id){ 
-//         return USERS[id];
-//     }) });
-// });
+app.get("/panel-users/:panelId", auth, function(req,res){
+    var panelId = req.params.panelId;
+    if(!(panelId in userCache)){
+        return res.send({users: []});
+    }
+    return res.send({users: Object.keys(userCache[panelId]).map(function(id){ 
+        return USERS[id];
+    }) });
+});
 
 var userCache = {};
 
