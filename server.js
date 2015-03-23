@@ -57,8 +57,6 @@ app.get('/auth/facebook/callback',
                                       failureRedirect: '/' }));
 
 
-
-
 // General Comments:
 // Note that in scss files, the panel width is 2000vw - meaning
 // that only 20 panels can be used in a sequence...
@@ -67,7 +65,6 @@ app.use('/', express.static(__dirname + '/www'));
 
 var panelData = [
             {  
-                id: 12342314,
                 time: + new Date('2015.03.18.15:15'),
                 icon: "059_Smilesend",
                 background: "#04be2c",
@@ -81,22 +78,6 @@ var panelData = [
                 text1: "Castle event?",
                 text2: "you lucky bastard...",
             },
-
-            {  
-                time: + new Date('2015.03.18.15:15'),
-                icon: "053_Institution",
-                background: "#d70335",
-                text1: "Castle event?",
-                text2: "you lucky bastard...",
-            },
-            {  
-                time: + new Date('2015.03.18.15:15'),
-                icon: "053_Institution",
-                background: "#d70335",
-                text1: "Castle event?",
-                text2: "you lucky bastard...",
-            },
-
             {  
                 time: + new Date('2015.03.22.15:15'),
                 icon: "",
@@ -104,14 +85,6 @@ var panelData = [
                 text1: "Have a JOINT",
                 text2: "you lucky bastard...",
             },
-            {  
-                time: + new Date('2015.03.18.15:15'),
-                icon: "053_Institution",
-                background: "#d70335",
-                text1: "Castle event?",
-                text2: "you lucky bastard...",
-            },
-
             ];
 
 // 

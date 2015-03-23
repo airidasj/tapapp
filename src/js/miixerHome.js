@@ -119,7 +119,7 @@ var miixerHome = React.createClass({
                     <div className='mixer-header'><span className="logo"></span></div>
                     <div className='mixer-video'></div>
                     <div className='mixer-login'>
-                      <span className="event">{'Next event: Saturday 14th March'}</span>
+                      <span className="event">{'Enter the keyword, to start Mixin!'}</span>
                         <div className='form'>
                           <textarea ref="input" className="input" placeholder="Type your code..." />
                           <span className="go">
@@ -170,8 +170,13 @@ var miixerHome = React.createClass({
        depth = depth == 2 ? 1 : 2;
        store.set('panelDepth', depth);
     },
+
     onSend: function(){
-        window.location = "/login/"+this.refs.input.getDOMNode().value;
+        if(this.refs.input.getDOMNode().value){
+            window.location = "/login/"+this.refs.input.getDOMNode().value;
+        } else {
+            dispatcher.emit('pinNumber', "");
+        }
     }
 });
 
