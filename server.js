@@ -14,7 +14,7 @@ var passport = require('passport'),
 var mongoose = require('mongoose');
 // mongoose.connect('mongodb://localhost/miixer');
 
-mongoose.connect("mongodb://<miixer>:<Miixer123>@ds035027.mongolab.com:35027/heroku_app35009083");
+mongoose.connect("mongodb://miixer:Miixer123@ds035027.mongolab.com:35027/heroku_app35009083");
 
 
 
@@ -178,7 +178,7 @@ function auth(req, res, next){
 }
 
 
-app.get('/panelData/:pinNumber', function(req, res){
+app.get('/panelData/:pinNumber', auth,  function(req, res){
     var pinNumber = req.params.pinNumber;
     console.log('The pin ===>', pinNumber, 'and type', typeof(pinNumber));
     // console.log(req.user);
