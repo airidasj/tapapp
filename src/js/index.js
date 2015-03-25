@@ -4,8 +4,8 @@ var React = require('react'),
 	miixerHome = require('./miixerHome'),
 	xhr = require('./xhr');
 
-
 var app;
+
 
 dispatcher.on('*', function() {
     if (app) app.forceUpdate();
@@ -60,15 +60,24 @@ dispatcher.on('eventFacebook', function(panelId){
 });
 
 
+
+
+
 if (window) {
     window._store = store;
     window.React = React;
     window.xhr = xhr;
+    window.dispatcher = dispatcher;
 }
-
-app = React.render(React.createElement(miixerHome), document.body);
 
 window.location.search.replace(/pin=([a-z0-9]+)/, function(_, pin){
     dispatcher.emit("pinNumber", pin);
     window.history.replaceState({}, "", "/");
 });
+
+// Previous app...
+app = React.render(React.createElement(miixerHome), document.body);
+
+
+
+

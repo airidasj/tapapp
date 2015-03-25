@@ -391,18 +391,21 @@ button.headerBack{
 
 .slideUp-enter {
   top: 100vh;
-  transition: top 400ms ease-in-out;
+  // transition: top 400ms ease-in;
+  @include transition(top ease-in 0.35s);
 }
 
 .slideUp-enter-active {
   top: 0;
   left: 0;
-  transition: top 400ms ease-in-out;
+  // transition: top 400ms ease-in;
+  @include transition(top ease-in 0.35s);
 }
 
 .slideUp-leave {
   top: 100vh;
-  transition: top 400ms ease-in-out;
+  // transition: top 400ms ease-out;
+  @include transition(top ease-out 0.35s);
 }
 
 

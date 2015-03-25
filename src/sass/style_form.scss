@@ -1,0 +1,155 @@
+@import "compass";
+@import "bootstrap.css";
+
+
+// Lets make things consistent.
+@import "normalize";
+
+// @import url(http://fonts.googleapis.com/css?family=Open+Sans);
+// @import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700);
+
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600);
+
+// --- Responsive design
+
+$break-small: 440px;
+$break-large: 700px;
+
+
+
+// This is a must! Why isn't it standard?
+*, *:before, *:after {
+    @include box-sizing(border-box);
+}
+
+html {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    color: #FFF;
+    // background-color: #fff;
+    font-family: Source Sans Pro;
+
+
+    background-image: url(http://miixer.im/wp-content/uploads/2015/03/boxed-bg.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: Top Center;
+	background-attachment: fixed;
+	}
+
+
+header{
+	height: 15vh;
+	background: url(../img/logo.png) 0 0 no-repeat #333333;
+	background-position: center;
+	box-shadow: 10px 10px 10px #888888;
+}
+
+.content {
+	background-color: rgba(0,0,0,0.9);
+	padding-right: 2.5vw;
+	padding-left: 2.5vw;
+
+	width: 95vw;
+	margin: 0 auto;
+	padding-top: 2vh;
+	padding-bottom: 45vh;
+
+	overflow: auto;
+ 	height: 90vh;
+
+ 	// @include transition(top ease-in 0.35s);
+
+ 	button{
+	 	color: #ffffff;
+	 	background-color: #337ab7;
+	 	border-color: #2e6da4;
+	 	padding: 15px 80px 15px 80px;
+  		margin: 15px auto;
+  		display: block;
+ 	}
+
+ 	h1 {
+		text-align: center;
+	}
+}
+
+.form {
+	border-bottom: 1px solid white;
+	border-radius: 15px;
+	display: -webkit-inline-box;
+	padding-bottom: 10px;
+
+	h1 {
+		text-align: center;
+	}
+
+
+	.input-group{
+		padding-bottom: 2.5%;
+		padding-top: 2.5%;
+	}
+
+	.fields {
+		width: 55%;
+	}
+
+	.preview {
+		width: 45%;
+		// background: #CCC;
+		position: relative;
+		padding: 2.5vw;
+	}
+}
+
+
+
+div.eventImage{
+  // @include vertical-align; 
+  // @include horizontal-align;
+  min-height: 90%;
+  width: 90%;
+  text-align: center;
+  position: absolute;
+  padding: 5vw;
+  border: 5px solid #333333;
+  border-radius: 15px;
+}
+
+.eventImage{
+  display: block;
+  // height: 100%;
+  width: 100%;
+  // position: absolute;
+  // text-transform: uppercase;
+
+  h1 {
+    font-size: 35px;
+    color: #304e55;
+    font-weight: 400;
+    margin-top: 15px;
+    margin-bottom: 0;
+  }
+  h2 {
+    color: #fff;
+    font-size: 32px;
+    font-weight: 400;
+    margin-top: 5px;
+  }
+}
+
+.eventIcon {
+  width: 45%;
+}
+
+
+
+
+
+

@@ -1,29 +1,79 @@
 var express = require('express');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var multer = require('multer'); 
+var fs = require('fs');
 
 var app = express();
 var passport = require('passport'),
     FacebookStrategy = require('passport-facebook').Strategy;
 
 
-  app.use(cookieParser());
-  app.use(session({ secret: 'keyboard cat' }));
-  app.use(passport.initialize());
-  app.use(passport.session());
+//--- Datbase:
+var mongoose = require('mongoose');
+// mongoose.connect('mongodb://localhost/miixer');
+
+mongoose.connect("mongodb://<miixer>:<Miixer123>@ds035027.mongolab.com:35027/heroku_app35009083");
+
+
+
+// aws = require("aws")
+
+// aws.s3.createSignedURL()
+
+// "https://s3.amazonaws.com/miixer/userpics/239741623874t129837456183724r.jpg"
+
+// var dsn = "mongodb://localhost/test";
+
+// if(process.env.MONGOLAB_URI){
+//     dsn = process.env.MONGOLAB_URI)
+// }
+
+// mongoose.connection(dsn);
+
+
+// --- DB Connection
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function (callback) {
+  console.log('Connected to DB! yay!');
+});
+
+var User = require('./lib/user-model'),
+    Panels = require('./lib/panel-model');
+
+
+app.use(cookieParser());
+app.use(session({ secret: 'keyboard cat' }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use(multer()); // for parsing multipart/form-data
+
 
 // ================================= //
 // Working with Facebook integration //
-// ================================= //
+// ================================= //cd lils
 
 var USERS = {};
-
 passport.use(new FacebookStrategy({
     clientID: "927061310658845",
     clientSecret: "60dd3ae06bca44adfc4046b2b8132981",
     // callbackURL: "http://localhost:8001/auth/facebook/callback"
     callbackURL: "http://app.miixer.im/auth/facebook/callback"
   },
+
+
+// var USERS = {};
+
+// passport.use(new FacebookStrategy({
+//     clientID: "929135713784738",
+//     clientSecret: "2836e56f77502f65dc838796294133a6",
+//     callbackURL: "http://localhost:8001/auth/facebook/callback"
+//   },
 
   function(accessToken, refreshToken, profile, done) {
     USERS[profile.id] = profile;
@@ -62,42 +112,62 @@ app.get('/auth/facebook/callback',
 // that only 20 panels can be used in a sequence...
 
 app.use('/', express.static(__dirname + '/www'));
+app.use('/createForm/', express.static(__dirname + '/www-form'));
 
-var panelData = [
-            {  
-                time: + new Date('2015.03.18.15:15'),
-                icon: "059_Smilesend",
-                background: "#04be2c",
-                text1: "Best APP EVER",
-                text2: "damn lucky bastards...",
-            },
-            {  
-                time: + new Date('2015.03.18.15:15'),
-                icon: "053_Institution",
-                background: "#d70335",
-                text1: "Castle event?",
-                text2: "you lucky bastard...",
-            },
-            {  
-                time: + new Date('2015.03.25.15:15'),
-                icon: "",
-                background: "",
-                text1: "Have a JOINT",
-                text2: "you lucky bastard...",
-            },
-            ];
+// =====================================  //
+// Creating a new panel                   //
+// =====================================  //
 
-// 
+app.post("/newPanel/", function(req, res){
+    var panelData = req.body[1];
+    var panelPin = req.body[0];
+    // console.log('Panel data in server =====>', panelData );
+    // console.log('Panel PIN in server =====>', panelPin );
+
+    Panels.find({'pin' : panelPin}, function(err, panel){
+        if(!err && panel[0]){
+            // do nothing, just checking...
+            console.log('Panel found...');
+
+        } else if(err){
+            console.log('Error creating new panel...',err);
+
+        } else if(!panel[0]){
+            console.log('Panel NOT FOUND, creating new...');
+            var nPanel = new Panels({ 'pin' : panelPin, 'panelData' : panelData});
+            nPanel.save(function(err, data){
+                if(!err){
+                    console.log('Panel saved', data);
+                }
+            });
+        }
+    });
+});
+
+// fs.readdirSync('./www-form/img/icons/', function(names){
+//     console.log(names);
+// });
+
+app.get('/iconNames/', function(req, res){
+    var list = fs.readdirSync('./www-form/img/icons');
+    list.shift();
+    // console.log(list);
+    var nList = [];
+    list.forEach(function(item){
+        nList.push(item.slice(0, -4));
+    });
+    res.send(nList);
+});
 
 var noPinPanel = [{  
                 image: "1" || {}, 
                 time: 0,
                 icon: "016_System",
                 background: "#f4853a",
-                text2: "Oops! We didn't find this pin",
-                // text2: "you motherfucker...",
+                text1: "Oops! We didn't find this keyword...",
+                text2: "Please try again...",
                 button: "GO Back",
-            },]
+            },];
 
 function auth(req, res, next){
     if(req.isAuthenticated()){
@@ -110,9 +180,22 @@ function auth(req, res, next){
 
 app.get('/panelData/:pinNumber', auth, function(req, res){
     var pinNumber = req.params.pinNumber;
-    console.log('The pin ===>', pinNumber);
-    console.log(req.user);
-    res.send(panelData);
+    console.log('The pin ===>', pinNumber, 'and type', typeof(pinNumber));
+    // console.log(req.user);
+    // res.send(panelData);
+
+    Panels.findOne({'pin' : pinNumber}, function(err, panel){
+        if(err){
+            console.log(err);
+        } else if (!panel){
+            // console.log('No panel with this PIN NUMBER ----', panel);
+            res.send(noPinPanel);
+        } else if (panel){
+            // console.log('Sent the panel', panel);
+            res.send(panel.panelData);
+        }
+    });
+
 });
 
 
@@ -160,19 +243,6 @@ app.get("/panel-users/:panelId", auth, function(req,res){
 
 var userCache = {};
 
-// aws = require("aws")
-
-// aws.s3.createSignedURL()
-
-// "https://s3.amazonaws.com/miixer/userpics/239741623874t129837456183724r.jpg"
-
-// var dsn = "mongodb://localhost/test";
-
-// if(process.env.MONGOLAB_URI){
-//     dsn = process.env.MONGOLAB_URI)
-// }
-
-// mongoose.connection(dsn);
 
 app.listen(process.env.PORT||8001);
 
