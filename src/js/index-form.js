@@ -33,7 +33,7 @@ dispatcher.on('newPanel', function(data){
                 text2: "you lucky bastard...",
             },
             {  
-                time: + new Date('2015.03.25.15:15'),
+                time: + new Date('2015.03.30.15:15'),
                 icon: "",
                 background: "",
                 text1: "Have a JOINT",
