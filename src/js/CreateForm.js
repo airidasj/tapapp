@@ -123,7 +123,7 @@ var FormFields = React.createClass({
 			text1: "Event Title",
 			text2: "Instructions",
 			background: "#F4853A",
-			time: ""
+			time: "",
 		};
 	},
 
@@ -132,8 +132,13 @@ var FormFields = React.createClass({
 		 var self = this;
 		return function(evt){
 			var obj = {};
-			obj[name] = evt.target.value;
-			self.setState(obj);
+			if(name === "time"){
+				obj[name] = +new Date(evt.target.value);
+				self.setState(obj);
+			} else {
+				obj[name] = evt.target.value;
+				self.setState(obj);
+			}
 		}
 	},
 	removeForm: function(number){
@@ -206,7 +211,7 @@ var FormFields = React.createClass({
 				<div className="col-lg-12">
 					<div className="input-group input-group-lg">
 					  <span className="input-group-addon" id="sizing-addon1">{'Time (optional)'}</span>
-					  <input type={"datetime-local"} className="form-control" placeholder={"Time to unlock the event"} aria-describedby="sizing-addon1" />
+					  <input type={"datetime-local"} onChange={this.setProp("time")} className="form-control" placeholder={"Time to unlock the event"} aria-describedby="sizing-addon1" />
 					</div>
 				</div>
 
