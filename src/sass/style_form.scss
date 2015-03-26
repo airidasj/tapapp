@@ -1,5 +1,6 @@
 @import "compass";
 @import "bootstrap.css";
+@import "animate.css";
 
 
 // Lets make things consistent.
@@ -177,7 +178,10 @@ position: absolute;
 
 }
 
-
+.alert {
+  font-size: 18px;
+  text-align: center;
+}
 
 
 

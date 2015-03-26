@@ -17,31 +17,31 @@ dispatcher.on('*', function() {
 
 dispatcher.on('newPanel', function(data){
 
-    var panelData = [["123"], [
-            {  
-                time: + new Date('2015.03.18.15:15'),
-                icon: "059_Smilesend",
-                background: "#04be2c",
-                text1: "Best APP EVER",
-                text2: "damn lucky bastards...",
-            },
-            {  
-                time: + new Date('2015.03.18.15:15'),
-                icon: "053_Institution",
-                background: "#d70335",
-                text1: "Castle event?",
-                text2: "you lucky bastard...",
-            },
-            {  
-                time: + new Date('2015.03.30.15:15'),
-                icon: "",
-                background: "",
-                text1: "Have a JOINT",
-                text2: "you lucky bastard...",
-            },]
-            ];
+    // var panelData = [["123"], [
+    //         {  
+    //             time: + new Date('2015.03.18.15:15'),
+    //             icon: "059_Smilesend",
+    //             background: "#04be2c",
+    //             text1: "Best APP EVER",
+    //             text2: "damn lucky bastards...",
+    //         },
+    //         {  
+    //             time: + new Date('2015.03.18.15:15'),
+    //             icon: "053_Institution",
+    //             background: "#d70335",
+    //             text1: "Castle event?",
+    //             text2: "you lucky bastard...",
+    //         },
+    //         {  
+    //             time: + new Date('2015.03.30.15:15'),
+    //             icon: "",
+    //             background: "",
+    //             text1: "Have a JOINT",
+    //             text2: "you lucky bastard...",
+    //         },]
+    //         ];
 
-    xhr('/newPanel/', 'POST', panelData).then(function(data){
+    xhr('/newPanel/', 'POST', data).then(function(data){
         console.log('Data sent to backend ==>', data);
     });
 

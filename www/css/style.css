@@ -575,6 +575,7 @@ body {
 div.eventImage {
   min-height: 100vh;
   text-align: center;
+  display: block;
 }
 
 .eventImage {

@@ -1,4 +1,5 @@
 @import url(bootstrap.css);
+@import url(animate.css);
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /**
  * 1. Set default font family to sans-serif.
@@ -526,4 +527,9 @@ button.form-remove {
 .miixer-submit .input {
   width: 70%;
   float: left;
+}
+
+.alert {
+  font-size: 18px;
+  text-align: center;
 }

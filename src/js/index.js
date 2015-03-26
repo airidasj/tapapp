@@ -70,7 +70,7 @@ if (window) {
     window.dispatcher = dispatcher;
 }
 
-window.location.search.replace(/pin=([a-z0-9]+)/, function(_, pin){
+window.location.search.replace(/pin=([a-z,A-Z,0-9]+)/, function(_, pin){
     dispatcher.emit("pinNumber", pin);
     window.history.replaceState({}, "", "/");
 });

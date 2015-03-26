@@ -84,13 +84,6 @@ var miixerHome = React.createClass({
             break;
         }
 
-        var obj = {
-            name: "test",
-            func : function(){ 
-                return this.name;
-            }
-        }
-
         // Defining the witdth depending on the number of panels...
         // mainPanelStyle.width = store.get('numberOfPanels')+ "00vw";
 

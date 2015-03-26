@@ -1,7 +1,8 @@
 var React = require('react/addons'),
     dispatcher = require('./Dispatcher').getInstance(),
     store = require('./Store').getInstance(),
-    Panel = require('./Panel');
+    Panel = require('./Panel'),
+    xhr = require('./xhr');
 
 var CreateForm = React.createClass({
 
@@ -13,16 +14,26 @@ var CreateForm = React.createClass({
 
 	render: function(){
 
+
 		var forms = [
-			<FormFields key="form0" number={1} />
+			<FormFields ref={"form"+1} key="form0" number={1} />
 		];
 
 		if(this.state.formCount > 1){
 			var remaining = this.state.formCount - 1;
 			while(remaining--){
-				forms.push(<FormFields key={"form"+forms.length} number={forms.length+1} />);
+				forms.push(<FormFields ref={"form"+(forms.length+1)} key={"form"+forms.length} number={forms.length+1} />);
 			}
 		}
+
+		if(store.get('pinAlert') === true){
+			var alert =  <PinAlert />;
+		} else if(store.get('pinSuccess')){
+			var alert = <PinSuccess />
+		}else {
+			var alert = "";
+		};
+		
 
 		if(store.get('removeForm') === true){
 			this.state.formCount -= 1;
@@ -36,20 +47,18 @@ var CreateForm = React.createClass({
 				{forms}
 				<button className="btn" onClick={this.addForm}>{'Add an one more Event!'}</button>
 				<div className="miixer-submit">
-					<h1>{'Submit the Form:'}</h1>
+					<h1>{'Create an Event Password'}</h1>
 
 					<div className="col-lg-12">
 						<div className="input input-group input-group-lg">
 						  <span className="input-group-addon" id="sizing-addon1"> <span className="glyphicon glyphicon-star" aria-hidden="true"></span> </span>
-						  <input type={"text"} className="form-control"  placeholder={"The Keyword"} aria-describedby="sizing-addon1" />
+						  <input ref="password" type={"text"} className="form-control"  placeholder={"Enter password"} aria-describedby="sizing-addon1" />
 						</div>
 
-						<button className="btn" >{'SUBMIT'}</button>
+						<button className="btn" onClick={this.submitClick} >{'SUBMIT'}</button>
 
 					</div>
-
-
-
+					{alert}
 				</div>
 			</div>
 		</div>;
@@ -61,6 +70,48 @@ var CreateForm = React.createClass({
 		});
 	},
 
+	_submitForm: function(){
+		console.log('Invoking submit form?');
+
+		var password = [this.refs.password.getDOMNode().value];
+		var nForms = this.state.formCount;
+
+		// console.log('Number of forms...',nForms);
+		var DataObjects = [];
+		
+
+		for (i=1; i < (nForms+1); i++){
+			// console.log(this.refs["form"+i]["state"]);
+			DataObjects.push(this.refs["form"+i]["state"])
+		};
+
+
+		Data = [];
+		Data.push(password);
+		Data.push(DataObjects);
+
+		console.log(Data);
+		dispatcher.emit('newPanel', Data);
+		store.set('pinSuccess', true);
+	},
+
+	submitClick: function(){
+		var p = this.refs.password.getDOMNode().value;
+		var self = this;
+		if(p){
+			xhr('/checkPin/'+p).then(function(response){
+				// console.log(response);
+				store.set('pinAlert', response);
+				if(response === false){
+					// console.log('We start the submit form function..');
+					self._submitForm();
+				}
+			});
+		} else {
+			store.set('pinAlert', true);
+		}
+	},
+
 
 });
 
@@ -69,8 +120,8 @@ var FormFields = React.createClass({
 	getInitialState: function(){
 		return {
 			icon: "016_System",
-			line1: "Create your",
-			line2: "MIIXER Event",
+			text1: "Event Title",
+			text2: "Instructions",
 			background: "#F4853A",
 			time: ""
 		};
@@ -93,6 +144,14 @@ var FormFields = React.createClass({
 
 	render: function(){
 
+		// if(store.get('submit-event') === true){
+		// 	console.log('=====>',this.state);
+
+		// 	console.log('=====>',this.refs.text1.getDOMNode().value);
+
+		// 	store.set('submit-event', false);
+		// }
+
 		if(this.props.number <= 1){
 			var buttonRemove = '';
 		} else {
@@ -104,7 +163,7 @@ var FormFields = React.createClass({
 			return <IconOptions key={i} icon={icona} />
 		});
 
-		return <div className="form">
+		return <div className="animated fadeInDown form">
 
 			<div className="fields">
 			{buttonRemove}
@@ -126,14 +185,14 @@ var FormFields = React.createClass({
 				<div className="col-lg-12">
 					<div className="input-group input-group-lg">
 					  <span className="input-group-addon" id="sizing-addon1"> <span className="glyphicon glyphicon-star" aria-hidden="true"></span> </span>
-					  <input type={"text"} className="form-control" value={this.state.line1} onChange={this.setProp("line1")} placeholder={"First Line"} aria-describedby="sizing-addon1" />
+					  <input type={"text"} className="form-control" value={this.state.text1} onChange={this.setProp("text1")} placeholder={"First Line"} aria-describedby="sizing-addon1" />
 					</div>
 				</div>
 
 				<div className="col-lg-12">
 					<div className="input-group input-group-lg">
 					  <span className="input-group-addon" id="sizing-addon1"> <span className="glyphicon glyphicon-star" aria-hidden="true"></span> </span>
-					  <input type={"text"} className="form-control" value={this.state.line2} onChange={this.setProp("line2")} placeholder={"Second Line"} aria-describedby="sizing-addon1" />
+					  <input type={"text"} className="form-control" value={this.state.text2} onChange={this.setProp("text2")} placeholder={"Second Line"} aria-describedby="sizing-addon1" />
 					</div>
 				</div>
 
@@ -175,8 +234,8 @@ var Panel = React.createClass({
 
 		return <div className="eventImage" style={eventStyle}>
                 <EventIcon image={this.props.icon}/>
-                  <h1>{this.props.line1}</h1>
-                  <h2>{this.props.line2}</h2>
+                  <h1>{this.props.text1}</h1>
+                  <h2>{this.props.text2}</h2>
                 </div>
 	}
 });
@@ -187,6 +246,30 @@ var EventIcon = React.createClass({
       <img src={'../img/icons/'+ this.props.image +'.png'} className="eventIcon"/>
     );
   }
+});
+
+var PinAlert = React.createClass({
+	render: function(){
+		return (
+			<div className="animated bounceIn alert alert-danger" role="alert">
+			  <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+			  
+			  {'This PASSWORD is taken...'}
+			</div>
+		);
+	}
+});
+
+var PinSuccess = React.createClass({
+	render: function(){
+		return (
+			<div className="animated bounceIn alert alert-success" role="alert">
+			  <span className="glyphicon glyphicon-check" aria-hidden="true"></span>
+			  
+			  {'Your MIIXER sequence has been submited!'}
+			</div>
+		);
+	}
 });
 
 

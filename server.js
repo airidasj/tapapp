@@ -56,7 +56,7 @@ app.use(multer()); // for parsing multipart/form-data
 
 // ================================= //
 // Working with Facebook integration //
-// ================================= //cd lils
+// ================================= //
 
 var USERS = {};
 passport.use(new FacebookStrategy({
@@ -74,6 +74,8 @@ passport.use(new FacebookStrategy({
 //     clientSecret: "2836e56f77502f65dc838796294133a6",
 //     callbackURL: "http://localhost:8001/auth/facebook/callback"
 //   },
+
+
 
   function(accessToken, refreshToken, profile, done) {
     USERS[profile.id] = profile;
@@ -176,6 +178,23 @@ function auth(req, res, next){
         res.send(403);
     }
 }
+
+app.get('/checkPin/:pin', function(req, res){
+
+    var pin = req.params.pin;
+
+    Panels.findOne({'pin' : pin}, function(err, panel){
+        if(err){
+            console.log(err);
+        } else if (!panel){
+            // console.log('No panel with this PIN NUMBER ----', panel);
+            res.send(false);
+        } else if (panel){
+            // console.log('Sent the panel', panel);
+            res.send(true);
+        }
+    });
+});
 
 
 app.get('/panelData/:pinNumber', auth,  function(req, res){
