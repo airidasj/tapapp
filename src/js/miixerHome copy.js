@@ -114,9 +114,10 @@ var miixerHome = React.createClass({
                     <div className='mixer-login'>
                       <span className="event">{'Enter the keyword, to start Mixin!'}</span>
                         <div className='form'>
-                          <textarea ref="input" className="input" placeholder="Type your sequence password..." />
-            
-                            <button className="facebook-miixer" onClick={this.onSend}></button>
+                          <textarea ref="input" className="input" placeholder="Type your code..." />
+                          <span className="go">
+                            <button className="go-mixer" onClick={this.onSend}>GO</button>
+                          </span>
                       </div>
                     </div>
                     <div className='mixer-apply'><a href="http://miixer.im/">Apply to join...</a></div>

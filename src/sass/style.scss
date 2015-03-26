@@ -149,7 +149,7 @@ body {
 	}
 
 	.input{
-		width:70%;
+		width:100%;
 		height: 80px;
 		float: left;
 
@@ -408,6 +408,27 @@ button.headerBack{
   // transition: top 400ms ease-out;
   @include transition(top ease-out 0.35s);
 }
+
+button.facebook-miixer{
+  background: url(../img/fb-login.png) 0 0 no-repeat;
+ 
+  width: 100%;
+  height: 60px;
+  margin-top: 10px;
+  background-size: contain;
+  background-position: center;
+  border: none;
+
+}
+
+
+
+
+
+
+
+
+
 
 
 

@@ -489,7 +489,7 @@ body {
   vertical-align: middle;
 }
 .mixer-login .input {
-  width: 70%;
+  width: 100%;
   height: 80px;
   float: left;
   height: 80px;
@@ -716,4 +716,14 @@ button.headerBack {
   -o-transition: top 0.35s ease-out;
   -webkit-transition: top 0.35s ease-out;
   transition: top 0.35s ease-out;
+}
+
+button.facebook-miixer {
+  background: url(../img/fb-login.png) 0 0 no-repeat;
+  width: 100%;
+  height: 60px;
+  margin-top: 10px;
+  background-size: contain;
+  background-position: center;
+  border: none;
 }

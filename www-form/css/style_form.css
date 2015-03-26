@@ -532,4 +532,7 @@ button.form-remove {
 .alert {
   font-size: 18px;
   text-align: center;
+  display: block;
+  float: left;
+  width: 100%;
 }
