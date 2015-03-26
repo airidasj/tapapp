@@ -667,8 +667,8 @@ button.eventFacebook {
 button.headerBack {
   background: url(../img/cross.png) 0 0 no-repeat;
   margin: 10px;
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   background-size: contain;
   border: none;
 }
@@ -687,7 +687,15 @@ button.headerBack {
   float: left;
 }
 .slideUpPanel .headerMenu {
-  height: 20%;
+  height: 17%;
+  box-shadow: 0px 10px 15px #888888;
+  background: #444;
+  padding-top: 5px;
+  text-align: center;
+  color: #fff;
+}
+.slideUpPanel .headerMenu h2 {
+  margin-right: 60px;
 }
 .slideUpPanel .headerMenu .headerBack {
   float: left;
@@ -695,27 +703,27 @@ button.headerBack {
 
 .slideUp-enter {
   top: 100vh;
-  -moz-transition: top 0.35s ease-in;
-  -o-transition: top 0.35s ease-in;
-  -webkit-transition: top 0.35s ease-in;
-  transition: top 0.35s ease-in;
+  -moz-transition: top 0.35s ease-in-out;
+  -o-transition: top 0.35s ease-in-out;
+  -webkit-transition: top 0.35s ease-in-out;
+  transition: top 0.35s ease-in-out;
 }
 
 .slideUp-enter-active {
   top: 0;
   left: 0;
-  -moz-transition: top 0.35s ease-in;
-  -o-transition: top 0.35s ease-in;
-  -webkit-transition: top 0.35s ease-in;
-  transition: top 0.35s ease-in;
+  -moz-transition: top 0.35s ease-in-out;
+  -o-transition: top 0.35s ease-in-out;
+  -webkit-transition: top 0.35s ease-in-out;
+  transition: top 0.35s ease-in-out;
 }
 
 .slideUp-leave {
   top: 100vh;
-  -moz-transition: top 0.35s ease-out;
-  -o-transition: top 0.35s ease-out;
-  -webkit-transition: top 0.35s ease-out;
-  transition: top 0.35s ease-out;
+  -moz-transition: top 0.35s ease-in-out;
+  -o-transition: top 0.35s ease-in-out;
+  -webkit-transition: top 0.35s ease-in-out;
+  transition: top 0.35s ease-in-out;
 }
 
 button.facebook-miixer {
@@ -726,4 +734,39 @@ button.facebook-miixer {
   background-size: contain;
   background-position: center;
   border: none;
+}
+
+.FB-users {
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 300px;
+}
+.FB-users li {
+  list-style: none;
+  margin: 5px;
+  display: block;
+  float: left;
+  border-bottom: 1px solid white;
+  width: 90%;
+  padding: 5px;
+}
+.FB-users a {
+  color: #fff;
+  text-decoration: none;
+}
+.FB-users h3 {
+  color: #fff;
+  font-size: 22px;
+  float: left;
+  padding: 5px;
+  margin-left: 10px;
+}
+
+img.FB-pic {
+  border: 2px solid white;
+  border-radius: 50px;
+  width: 75px;
+  float: left;
 }

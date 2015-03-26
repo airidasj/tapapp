@@ -37,25 +37,27 @@ dispatcher.on("leavePanel", function(panelId){
 });
 
 dispatcher.on('eventFacebook', function(panelId){
-    console.log('E-FB======>',panelId);
+    // console.log('E-FB======>',panelId);
     var route = "/panel-users/"+panelId;
 
     xhr(route).then(function(data){
 
-        var listUsers = [];
-        data.users.forEach(function(user){
-            console.log(user);
-            listUsers.push(user.displayName);
-        });
+        // var listUsers = [];
+        // data.users.forEach(function(user){
+        //     console.log(user);
+        //     listUsers.push(user.displayName);
+        // });
 
 
-        store.set('peopleInEvent', listUsers);
-        console.log('the list ====>',listUsers);
+        store.set('peopleInEvent', data.users);
+
+
+        // console.log('the list ====>',listUsers);
     
 
-        // store.set('peopleInEvent', data);
-        console.log('======>',data);
-        console.log('======>',data.users[0].displayName);
+        // // store.set('peopleInEvent', data);
+        // console.log('======>',data);
+        // console.log('======>',data.users[0].displayName);
     });
 });
 

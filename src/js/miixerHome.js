@@ -89,8 +89,9 @@ var miixerHome = React.createClass({
 
         var FBusers = store.get('peopleInEvent') || [];
 
+        // console.log('FB users ===>',FBusers);
         var Users = FBusers.map(function(user, i){
-            return <FacebookNames key={i} userNames={user} />
+            return <FacebookNames key={i} FBuser={user} />;
         }, this);
 
             var slideUpPanel = null;
@@ -98,8 +99,10 @@ var miixerHome = React.createClass({
                 var text = store.get("slideUpPanel");
                 slideUpPanel = 
                 <div key={"slideUp"+text} className="slideUpPanel">
-                    <header className="headerMenu"><button onClick={store.set.bind(store, 'slideUpPanel', false)} className="headerBack"></button><h1>{text}</h1></header>
-                    {Users}
+                    <header className="headerMenu"><button onClick={store.set.bind(store, 'slideUpPanel', false)} className="headerBack"></button><h2>{"People in the MIX"}</h2></header>
+                    <div className="FB-users">
+                        {Users}
+                    </div>
                 </div>
             }
 
@@ -176,7 +179,17 @@ var FacebookNames = React.createClass({
 
     render: function(){
 
-       return <li><h1>{this.props.userNames}</h1></li>
+        var FB = this.props.FBuser;
+        // console.log('The FB ===> ',FB);
+
+       return <div>
+
+       <a href={FB.profileUrl}><li>
+           <span className="FB-pic"><img className="FB-pic" src={"http://graph.facebook.com/"+FB.id+"/picture?type=normal"}></img></span>
+           <h3>{FB.displayName}</h3>
+       </li></a>
+
+       </div>;
     }
 
 });
