@@ -26,8 +26,9 @@ var Panel = React.createClass({
 
           eventFooter = 
                 <div className="eventFooter">
-                  <button className="eventPictures" onClick={this.footerButton.bind(null, 'eventPictures')}></button>
-                  <button className="eventFacebook" onClick={this.footerButton.bind(null, 'eventFacebook')}></button>
+                  // <button className="eventPictures" onClick={this.footerButton.bind(this, 'eventPictures')}></button>
+                  <button className="eventFacebook" onClick={this.footerButton.bind(this, 'eventFacebook')}></button>
+                  <span className="uploadPicture"><input ref="picture" onChange={this.uploadPicture} className="uploadPic" type="file"></input></span>
                 </div>;
         }
 
@@ -69,7 +70,16 @@ var Panel = React.createClass({
       console.log(name);
       store.set('slideUpPanel', name);
       dispatcher.emit('eventFacebook', store.get('pinNumber'));
-    }
+    },
+    
+    uploadPicture: function(){
+      var picture = this.refs.picture.getDOMNode().value;
+      var pin = store.get('pinNumber');
+      var Data = [pin, picture];
+
+      console.log("In sequence: ",pin,"Uploading ==> ",picture);
+      dispatcher.emit('pictureUpload', Data);
+    },
 });
 
 

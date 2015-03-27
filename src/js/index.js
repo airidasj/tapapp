@@ -61,6 +61,15 @@ dispatcher.on('eventFacebook', function(panelId){
     });
 });
 
+dispatcher.on('pictureUpload', function(data){
+    console.log(data);
+    var pin = data[0];
+    var picture = data[1];
+
+    var route = "/picture/"+pin;
+    xhr(route, 'POST', picture);
+
+});
 
 
 
@@ -77,6 +86,9 @@ window.location.search.replace(/pin=([a-z,A-Z,0-9]+)/, function(_, pin){
     window.history.replaceState({}, "", "/");
 });
 
+if(document){
+    document.addEventListener('touchmove', function(e){}, true);
+}
 // Previous app...
 app = React.render(React.createElement(miixerHome), document.body);
 
