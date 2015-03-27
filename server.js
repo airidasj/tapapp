@@ -10,12 +10,12 @@ var passport = require('passport'),
     FacebookStrategy = require('passport-facebook').Strategy;
 
 // --- Image processing
-var cloudinary = require('cloudinary');
-cloudinary.config({ 
-  cloud_name: 'hooxxkj2f', 
-  api_key: '616288365828359', 
-  api_secret: 'd1JzuM4JWcKAS6xvk7dGDlvU-2A' 
-});
+// var cloudinary = require('cloudinary');
+// cloudinary.config({ 
+//   cloud_name: 'hooxxkj2f', 
+//   api_key: '616288365828359', 
+//   api_secret: 'd1JzuM4JWcKAS6xvk7dGDlvU-2A' 
+// });
 
 
 //--- Datbase:
