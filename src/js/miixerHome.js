@@ -130,11 +130,13 @@ var miixerHome = React.createClass({
                 <div className={wrapperClassName} style={detailPanelsStyle}>
                     <div ref="topLevelPanels" id="home-panels" className="panels" style={mainPanelStyle}>
 	                    {panels}
-	                 </div>
 
-                <ReactCSSTransitionGroup transitionName="slideUp">
-                    {slideUpPanel}
-                </ReactCSSTransitionGroup>
+                        { /* Swiping issues if slideUpPanel is elswhere */}
+                         <ReactCSSTransitionGroup transitionName="slideUp">
+                            {slideUpPanel}
+                        </ReactCSSTransitionGroup>
+
+	                 </div>
                 </div>
                 
                </div>
