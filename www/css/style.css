@@ -584,7 +584,7 @@ div.eventImage {
   position: absolute;
 }
 .eventImage h1 {
-  font-size: 35px;
+  font-size: 25px;
   color: #304e55;
   font-weight: 400;
   margin-top: 5px;
@@ -592,7 +592,7 @@ div.eventImage {
 }
 .eventImage h2 {
   color: #fff;
-  font-size: 32px;
+  font-size: 22px;
   font-weight: 400;
   margin-top: 5px;
 }
@@ -617,6 +617,7 @@ button.eventButton {
   position: absolute;
   bottom: 0vh;
   width: 100%;
+  text-align: center;
 }
 
 button.eventPictures {
@@ -639,6 +640,23 @@ button.eventFacebook {
   background-size: contain;
   border: none;
   float: right;
+}
+
+span.uploadPicture {
+  background: url(../img/camera.png) 0 0 no-repeat;
+  margin: 10px auto;
+  bottom: 0;
+  width: 60px;
+  height: 60px;
+  background-size: contain;
+  border: none;
+  display: block;
+}
+
+input.uploadPic {
+  opacity: 0;
+  width: 60px;
+  height: 60px;
 }
 
 .timer {

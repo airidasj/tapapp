@@ -9,6 +9,14 @@ var app = express();
 var passport = require('passport'),
     FacebookStrategy = require('passport-facebook').Strategy;
 
+// --- Image processing
+var cloudinary = require('cloudinary');
+cloudinary.config({ 
+  cloud_name: 'hooxxkj2f', 
+  api_key: '616288365828359', 
+  api_secret: 'd1JzuM4JWcKAS6xvk7dGDlvU-2A' 
+});
+
 
 //--- Datbase:
 var mongoose = require('mongoose');
@@ -197,7 +205,7 @@ app.get('/checkPin/:pin', function(req, res){
 });
 
 
-app.get('/panelData/:pinNumber', auth,  function(req, res){
+app.get('/panelData/:pinNumber',  function(req, res){
     var pinNumber = req.params.pinNumber;
     console.log('The pin ===>', pinNumber, 'and type', typeof(pinNumber));
     // console.log(req.user);
@@ -259,6 +267,20 @@ app.get("/panel-users/:panelId", auth, function(req,res){
         return USERS[id];
     }) });
 });
+
+app.post("/picture/:pin", function(req, res){
+    var pin = req.params.pin;
+    // var image = req.files;
+
+    // console.log('The image ==>', image);
+    console.log('Trying to upload...');
+
+    res.send(204);
+    // cloudinary.uploader.upload("http://www.example.com/image.jpg", function(result) { 
+    //   console.log(result) 
+    // });
+});
+
 
 var userCache = {};
 
