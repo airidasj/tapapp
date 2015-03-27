@@ -205,7 +205,7 @@ app.get('/checkPin/:pin', function(req, res){
 });
 
 
-app.get('/panelData/:pinNumber',  function(req, res){
+app.get('/panelData/:pinNumber', auth,  function(req, res){
     var pinNumber = req.params.pinNumber;
     console.log('The pin ===>', pinNumber, 'and type', typeof(pinNumber));
     // console.log(req.user);
