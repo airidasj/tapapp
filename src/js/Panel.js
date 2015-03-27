@@ -26,7 +26,7 @@ var Panel = React.createClass({
 
           eventFooter = 
                 <div className="eventFooter">
-                  // <button className="eventPictures" onClick={this.footerButton.bind(this, 'eventPictures')}></button>
+                  {/* <button className="eventPictures" onClick={this.footerButton.bind(this, 'eventPictures')}></button> */}
                   <button className="eventFacebook" onClick={this.footerButton.bind(this, 'eventFacebook')}></button>
                   <span className="uploadPicture"><input ref="picture" onChange={this.uploadPicture} className="uploadPic" type="file"></input></span>
                 </div>;
