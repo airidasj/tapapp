@@ -132,11 +132,11 @@ var miixerHome = React.createClass({
 	                    {panels}
 	                 </div>
 
-                  
-                </div>
                 <ReactCSSTransitionGroup transitionName="slideUp">
                     {slideUpPanel}
                 </ReactCSSTransitionGroup>
+                </div>
+                
                </div>
     },
     onItemClick: function(item){
