@@ -1,15 +1,51 @@
 @import "compass";
-@import "bootstrap.css";
-@import "animate.css";
-
 
 // Lets make things consistent.
 @import "normalize";
+@import "animate.css";
 
 // @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 // @import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700);
 
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600);
+
+// $chat-color: #87C739;
+// $star-color: #FFC500;
+// $channel-color: #5677FB;
+// $chat-bubble-bg-color: #F1F5F8;
+// $list-jewel-bg-color: #F2F5F8;
+// $body-bg: #E0E0E0;
+// $list-seperator-color: #E0E0E0;
+
+
+// MIXINS ---->
+
+@mixin vertical-align {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin horizontal-align {
+    /* Internet Explorer 10 */
+    display:-ms-flexbox;
+    -ms-flex-pack:center;
+    -ms-flex-align:center;
+    /* Firefox */
+    display:-moz-box;
+    -moz-box-pack:center;
+    -moz-box-align:center;
+    /* Safari, Opera, and Chrome */
+    display:-webkit-box;
+    -webkit-box-pack:center;
+    -webkit-box-align:center;
+    /* W3C */
+    display:box;
+    box-pack:center;
+    box-align:center;
+}
 
 // --- Responsive design
 
@@ -32,159 +68,69 @@ html {
 body {
     margin: 0;
     padding: 0;
-    color: #FFF;
-    // background-color: #fff;
+    color: #000;
+    background-color: #333333;
     font-family: Source Sans Pro;
-
-
-    background-image: url(http://miixer.im/wp-content/uploads/2015/03/boxed-bg.jpg);
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: Top Center;
-	background-attachment: fixed;
-	}
-
-
-header{
-	height: 15vh;
-	background: url(../img/logo.png) 0 0 no-repeat #333333;
-	background-position: center;
-	box-shadow: 10px 10px 10px #888888;
-}
-
-.content {
-	background-color: rgba(0,0,0,0.9);
-	padding-right: 2.5vw;
-	padding-left: 2.5vw;
-
-	width: 95vw;
-	margin: 0 auto;
-	padding-top: 2vh;
-	padding-bottom: 45vh;
-
-	overflow: auto;
- 	height: 90vh;
-
- 	// @include transition(top ease-in 0.35s);
-
- 	button{
-	 	color: #ffffff;
-	 	background-color: #337ab7;
-	 	border-color: #2e6da4;
-	 	padding: 10px 80px 8px 80px;
-  		margin: 15px auto;
-  		display: block;
-  		font-size: 20px;
- 	}
-
- 	h1 {
-		text-align: center;
-	}
-}
-
-.form {
-	border-bottom: 1px solid white;
-	border-radius: 15px;
-	display: -webkit-inline-box;
-	padding-bottom: 10px;
-
-	h1 {
-		text-align: center;
-	}
-
-
-	.input-group{
-		padding-bottom: 2.5%;
-		padding-top: 2.5%;
-	}
-
-	.fields {
-		width: 50%;
-		position: relative;
-	}
-
-	.preview {
-		width: 50%;
-		// background: #CCC;
-		position: relative;
-		padding: 5%;
-	}
 }
 
 
 
-div.eventImage{
-  // @include vertical-align; 
-  // @include horizontal-align;
-  // min-height: 90%;
-  // width: 90%;
-  text-align: center;
-  // position: absolute;
-  padding: 3vw;
-  border: 5px solid #333333;
-  border-radius: 15px;
-}
+.wrapper {
 
-.eventImage{
-  display: block;
-  // height: 100%;
-  width: 100%;
-  // position: absolute;
-  // text-transform: uppercase;
-
-  h1 {
-    font-size: 35px;
-    color: #304e55;
-    font-weight: 400;
-    margin-top: 15px;
-    margin-bottom: 0;
-  }
-  h2 {
-    color: #fff;
-    font-size: 32px;
-    font-weight: 400;
-    margin-top: 5px;
-  }
-}
-
-.eventIcon {
-  width: 45%;
-}
-
-button.form-remove{
-
-position: absolute;
-  background: url(../img/cross.png) 0 0 no-repeat;
-  // margin-top: -5px;
-  width: 50px;
-  height: 50px;
-  background-size: contain;
-  border: none;
-}
-
-.miixer-submit {
-  float: left;
-  border-top: 1px solid white;
-  margin-top: 20px;
-  text-align: left;
-
-  h1 {
-  	text-align: left;
-  }
-  .input{
-  	width: 70%;
-  	float: left;
-  }
-
-}
-
-.alert {
-  font-size: 18px;
-  text-align: center;
-  display: block;
-  float: left;
+  background: #6A5ACD;
+  height: 100vh;
   width: 100%;
 }
+
+
+
+
+.col {
+  position: relative;
+  display: block;
+  float: left;
+  margin: 1.25%;
+  background-color: #444;
+  color: #fff;
+  padding: 100px;
+  box-sizing: border-box;
+  &.orange {
+    background-color: #EF8130;
+  }
+  &.blue {
+    background-color: #00ADE2;
+  }
+  &.gray {
+    background-color: #444;
+  }
+  &.green {
+    background-color: #76CE51;
+  }
+  &-1- {
+    &2 {
+      width: 47.5%;
+    }
+    &3 {
+      width: 30.8333%;
+    }
+    &4 {
+      width: 22.5%;
+    }
+  }
+}
+
+svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+circle {
+  fill: rgba(255,255,255,0.1);
+}
+
+
 
 
 

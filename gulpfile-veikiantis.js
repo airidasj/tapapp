@@ -30,6 +30,7 @@ function scripts(watch) {
   if(watch) {
     bundler = watchify(bundler);
   }
+
   bundler.transform(reactify);
 
   rebundle = function() {
@@ -37,7 +38,7 @@ function scripts(watch) {
     stream.on('error', handleError('Browserify'));
     stream = stream.pipe(source('bundle.js'));
     return stream.pipe(gulp.dest('./www/js')).pipe(notify({
-      title: "TAPSNOKLIS app",
+      title: "TAPSNOKLIS JS",
       message: "Scripts Built"
     }));
   };
@@ -45,37 +46,6 @@ function scripts(watch) {
   bundler.on('update', rebundle);
   return rebundle();
 }
-
-function scriptsForm(watch) {
-  var bundler, rebundle;
-  bundler = browserify('./index-form.js', {
-    basedir: __dirname + '/src/js/',
-    debug: !production,
-    cache: {}, // required for watchify
-    packageCache: {}, // required for watchify
-    fullPaths: watch // required to be true only for watchify
-  });
-  if(watch) {
-    bundler = watchify(bundler);
-  }
-  bundler.transform(reactify);
-
-  rebundle = function() {
-    var stream = bundler.bundle();
-    stream.on('error', handleError('Browserify'));
-    stream = stream.pipe(source('bundle.js'));
-    return stream.pipe(gulp.dest('./www-form/js')).pipe(notify({
-      title: "TAPSNOKLIS www",
-      message: "Scripts Built"
-    }));
-  };
-
-  bundler.on('update', rebundle);
-  return rebundle();
-}
-
-
-
 
 gulp.task('scripts', function() {
   return scripts(false);
@@ -86,17 +56,8 @@ gulp.task('watchScripts', function() {
 });
 
 
-gulp.task('scriptsForm', function() {
-  return scriptsForm(false);
-});
-
-gulp.task('watchScriptsForm', function() {
-  return scriptsForm(true);
-});
-
-
 gulp.task('styles', function() {
-  gulp.src('./src/sass/style.scss')
+  gulp.src('./src/sass/*.scss')
     .pipe(compass({
       project: path.join(__dirname),
       css: './www/css',
@@ -105,28 +66,13 @@ gulp.task('styles', function() {
     .on('error', handleError('Compass'))
     // .pipe(gulp.dest('./www'))
     .pipe(notify({
-      title: "TAPSNOKLIS - Styles",
+      title: "TAPSNOKLIS CSS",
       message: "Styles Built"
     }));
-
-
-  gulp.src('./src/sass/style_form.scss')
-    .pipe(compass({
-      project: path.join(__dirname),
-      css: './www-form/css',
-      sass: './src/sass'
-    }))
-    .on('error', handleError('Compass'))
-    // .pipe(gulp.dest('./www'))
-    .pipe(notify({
-      title: "TAPSNOKLIS - Styles",
-      message: "Styles Built for FORM"
-    }));  
-
 });
 
 gulp.task('watchStyles', function(){
   return gulp.watch('./src/sass/**/*.scss', ['styles']);
 });
 
-gulp.task('default', ['watchScripts', 'watchScriptsForm', 'watchStyles']);
+gulp.task('default', ['watchScripts', 'watchStyles']);

@@ -2,6 +2,7 @@
 
 // Lets make things consistent.
 @import "normalize";
+@import "animate.css";
 
 // @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 // @import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700);
@@ -72,424 +73,63 @@ body {
     font-family: Source Sans Pro;
 }
 
-.mixer-header {
-  // height: 20%;
-  background: #333333;
-  text-align: center;
-  // padding-top: 10%;
-  
-  .logo {
-  overflow: overlay;
-	display: block;
-	padding-top: 25%;
-	
-
-  	@media screen and (max-width: $break-small) {
-	    background: url(../img/logo.png) no-repeat center;
-	    background-size: 70%;
-	}
-
-	background: url(../img/logo.png) no-repeat center;
-
-  }
-}
-
-.mixer-video {
-  background: url(../img/party.jpg) 0 -50px no-repeat #333333;
-  height: 100%;
-  background-size: cover;
-}
-
-.mixer-apply {
-  bottom: 0;
-  /* top: 0; */
-  height: 15%;
-  background: #333333;
-  // border-top: 1px solid #fff;
-  color: #fff;
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  font-size: 24px;
-  padding-top: 5%;
 
 
-  a{
-  	color: #fff;
-  	text-transform: uppercase;
-  	text-decoration: none;
-  }
-  a:hover{
-  	color: #666;
-  }
-}
+.wrapper {
 
-.mixer-login {
-	@include vertical-align;
-	width: 100%;
-	background: rgba(100, 100, 100, 0.9);
-	padding-top: 10%;
-	padding-bottom: 10%;
-	text-align: center;
-
-	.event{
-		font-size: 20px;
-		padding-bottom: 4%;
-		display: -webkit-inline-box;
-
-		@media screen and (max-width: $break-small) {
-			font-size: 18px;
-		}
-	}
-
-	.form {
-		display: block;
-		padding: 0 15px 0 15px;
-		vertical-align: middle;
-	}
-
-	.input{
-		width:100%;
-		height: 80px;
-		float: left;
-
-		height: 80px;
-		border: 0px !important;
-		border-bottom: 1px solid !important;
-		border-bottom-color: #ccc !important;
-		-moz-border-radius: 0px !important;
-		-khtml-border-radius: 0px !important;
-		-webkit-border-radius: 0px !important;
-		border-radius: 0px !important;
-
-
-		@media screen and (max-width: $break-small) {
-			height: 60px;
-		}
-	}
-	.go {
-		// padding-left: 1%;
-		color: #FFF;
-		font-size: 20px;
-		text-align: center;
-
-	}
-	.go-mixer{
-		border: none;
-		width: 25%;
-		background: #009e0f;
-		height: 80px;
-		float: right;
-
-		@media screen and (max-width: $break-small) {
-			height: 60px;
-		}
-	}
-}
-
-.imageStyle{
-	max-width: 100%; 
-	height: auto;
-}
-
-// PANEL Transitions ======================================================
-
-.panels-wrapper {
-    position: fixed;
-    overflow: hidden;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    bottom: 0;
-    @include transition(transform 0.35s ease-out);
-}
-
-.panels-wrapper + .panels-wrapper {
-    left: 100vw;
-    @include transition(transform ease-out 0.35s);
-}
-
-
-.panels {
-    //@include display-flex;
-    //flex-wrap: nowrap;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 2000vw;
-    bottom:0;
-    overflow: hidden;
-    @include transition(transform ease-out 0.35s);
-}
-
-.panel {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    bottom: 0;
-    // border-left: 1px solid $list-seperator-color;
-    // border-right: 1px solid $list-seperator-color;
-    // padding-top: 50px; // must be height of .panel-header
-    background-color: #FFF;
-}
-
-// .panel:nth-last-child(4){
-//     left: 200vw;
-// }
-
-// .panel:nth-last-child(3){
-//     left: 300vw;
-// }
-// .panel:nth-last-child(2){
-//     left: 400vw;
-// }
-// .panel:nth-last-child(1){
-//     left: 500vw;
-// }
-
-// .panel:first-child + .panel + .panel:last-child {
-//     left: 600vw;
-// }
-
-// .panel:first-child + .panel {
-//     left: 100vw;
-// }
-
-
-div.eventImage{
-  // @include vertical-align; 
-  // @include horizontal-align;
-  min-height: 100vh;
-  text-align: center;
-  display: block;
-}
-
-.eventImage{
-  display: block;
-  // height: 100%;
-  width: 100%;
-  position: absolute;
-  // text-transform: uppercase;
-
-  h1 {
-    font-size: 25px;
-    color: #304e55;
-    font-weight: 400;
-    margin-top: 5px;
-    margin-bottom: 0;
-  }
-  h2 {
-    color: #fff;
-    font-size: 22px;
-    font-weight: 400;
-    margin-top: 5px;
-  }
-}
-
-.eventIcon {
-  width: 45%;
-}
-
-button.eventButton{
-  position: absolute;
-  z-index: 100;
-  padding: 20px;
-  bottom: 10%;
-  background-color: #009e0f;
-  color: #fff;
-  font-size: 30px;
-  border: none;
-  width: 100%;
-}
-
-
-.eventFooter{
-  position: absolute;
-  bottom: 0vh;
-  width: 100%;
-  // height: 20%;
-  text-align: center;
-}
-
-button.eventPictures{
-  background: url(../img/gallery.png) 0 0 no-repeat;
-  margin: 10px;
-  bottom: 0;
-  width: 60px;
-  height: 60px;
-  background-size: contain;
-  border: none;
-  float: left;
-}
-button.eventFacebook{
-  background: url(../img/group.png) 0 0 no-repeat;
-  margin: 10px;
-  bottom: 0;
-  width: 60px;
-  height: 60px;
-  background-size: contain;
-  border: none;
-  float: right;
-}
-
-span.uploadPicture {
-  background: url(../img/camera.png) 0 0 no-repeat;
-  margin: 10px auto;
-  bottom: 0;
-  width: 60px;
-  height: 60px;
-  background-size: contain;
-  border: none;
-  display: block;
-}
-input.uploadPic{
-  opacity:0;
-  width: 60px;
-  height: 60px;
-}
-
-
-.timer{
-  position: absolute;
-  z-index: 100;
-  width: 100%;
-  bottom: 20%;
-  color: white;
-  background: rgba(100, 100, 100, 0.9);
-
-  h1 {
-  font-size: 30px;
-  color: #fff;
-  }
-  h2 {
-    font-size: 28px;
-    color: #fff;
-  }
-
-}
-
-.headerMenu{
-  height: 10%;
-  display: block;
-  text-align: left;
-}
-button.headerBack{
-  background: url(../img/cross.png) 0 0 no-repeat;
-  margin: 10px;
-  width: 50px;
-  height: 50px;
-  background-size: contain;
-  border: none;
-}
-
-
-.slideUpPanel {
-  position:absolute;
-  width: 100vw;
+  background: #6A5ACD;
   height: 100vh;
-  top: 0;
-  left: 0;
-  // background: rgba(0,0,0,0.5);
-  background-color: #333333;
-  transition: top 200ms ease-out;
-
-  h1{
-    color: #fff;
-    float: left;
-  }
-
-  .headerMenu{
-    height: 17%;
-    box-shadow: 0px 10px 15px #888888;
-    background: #444;
-    padding-top: 5px;
-    text-align: center;
-    color:#fff;
-
-    h2{
-      margin-right: 60px;
-    }
-
-    .headerBack{
-      float:left;
-    }
-  }
-}
-
-.slideUp-enter {
-  top: 100vh;
-  // transition: top 400ms ease-in;
-  @include transition(top ease-in-out 0.35s);
-}
-
-.slideUp-enter-active {
-  top: 0;
-  left: 0;
-  // transition: top 400ms ease-in;
-  @include transition(top ease-in-out 0.35s);
-}
-
-.slideUp-leave {
-  top: 100vh;
-  // transition: top 400ms ease-out;
-  @include transition(top ease-in-out 0.35s);
-}
-
-button.facebook-miixer{
-  background: url(../img/fb-login.png) 0 0 no-repeat;
- 
   width: 100%;
-  height: 60px;
-  margin-top: 10px;
-  background-size: contain;
-  background-position: center;
-  border: none;
-
+  cursor: pointer;
 }
 
-.FB-users {
-  overflow: auto;
-  height: 100%;
-  width: 100%;
-  padding-top: 10px;
-  padding-bottom: 300px;
 
 
-  li {
-    list-style: none;
-    margin: 5px;
-    display: block;
-    float: left;
-    border-bottom: 1px solid white;
-    width: 90%;
-    padding: 5px;
-  }
-  a {
-    color: #fff;
-    text-decoration: none;
-  }
-  h3 {
-    color: #fff;
-    font-size: 22px;
-    float: left;
-    padding: 5px;
-    margin-left: 10px;
-  }
-}
 
-img.FB-pic {
-  border: 2px solid white;
-  border-radius: 50px;
-  width: 75px;
+.col {
+  position: relative;
+  display: block;
   float: left;
+  margin: 1.25%;
+  background-color: #444;
+  color: #fff;
+  padding: 100px;
+  box-sizing: border-box;
+  &.orange {
+    background-color: #EF8130;
+  }
+  &.blue {
+    background-color: #00ADE2;
+  }
+  &.gray {
+    background-color: #444;
+  }
+  &.green {
+    background-color: #76CE51;
+  }
+  &-1- {
+    &2 {
+      width: 47.5%;
+    }
+    &3 {
+      width: 30.8333%;
+    }
+    &4 {
+      width: 22.5%;
+    }
+  }
 }
 
-
-
-
-
-
+svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+circle {
+  fill: rgba(255,255,255,0.1);
+}
 
 
 

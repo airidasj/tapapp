@@ -1,4 +1,4 @@
-#wreed-boilerplate
+#Tapsnoklis
 
 ##Build CSS (sass)
 

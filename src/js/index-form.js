@@ -1,54 +1,28 @@
 var React = require('react'),
     dispatcher = require('./Dispatcher').getInstance(),
     store = require('./Store').getInstance(),
+	xhr = require('./xhr'),
 	CreateForm = require('./CreateForm'),
-	xhr = require('./xhr');
+	io = require('socket.io-client');
+
+var server = io.connect(window.location.origin);
 
 var app;
 
-
-dispatcher.on('*', function() {
-    if (app) app.forceUpdate();
-});
+// dispatcher.on('*', function() {
+//     if (app) app.forceUpdate();
+// });
 
 // ================================  //
 // Creating new panels
 // ================================  //
 
-dispatcher.on('newPanel', function(data){
 
-    // var panelData = [["123"], [
-    //         {  
-    //             time: + new Date('2015.03.18.15:15'),
-    //             icon: "059_Smilesend",
-    //             background: "#04be2c",
-    //             text1: "Best APP EVER",
-    //             text2: "damn lucky bastards...",
-    //         },
-    //         {  
-    //             time: + new Date('2015.03.18.15:15'),
-    //             icon: "053_Institution",
-    //             background: "#d70335",
-    //             text1: "Castle event?",
-    //             text2: "you lucky bastard...",
-    //         },
-    //         {  
-    //             time: + new Date('2015.03.30.15:15'),
-    //             icon: "",
-    //             background: "",
-    //             text1: "Have a JOINT",
-    //             text2: "you lucky bastard...",
-    //         },]
-    //         ];
+server.on('newCircle', function(data){
+    console.log('new circle!');
+    console.log('socket circle in index.js. ===> ', data);
+    dispatcher.emit('circleSocket', data);
 
-    xhr('/newPanel/', 'POST', data).then(function(data){
-        console.log('Data sent to backend ==>', data);
-    });
-
-});
-
-xhr('/iconNames/').then(function(data){
-	store.set('iconNames', data);
 });
 
 
